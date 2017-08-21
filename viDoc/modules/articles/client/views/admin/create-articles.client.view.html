@@ -1,0 +1,41 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Article
+    <small>Article detail</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Article</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="box box-success">
+    <div class="box-header with-border">
+      <h3 class="box-title">New Article</h3>
+    </div>
+    <div class="box-body">
+      <form name="vm.form.articleForm" ng-submit="vm.save(vm.form.articleForm.$valid)" novalidate>
+        <fieldset>
+          <div class="form-group" show-errors>
+            <label class="control-label" for="title">Title</label>
+            <input name="title" type="text" ng-model="vm.article.title" id="title" class="form-control" placeholder="Title" required autofocus>
+            <div ng-messages="vm.form.articleForm.title.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Article title is required.</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <div id="editor1" name="content" id="content" ></div>
+          </div>
+          <div class="form-group" style="float: right">
+            <button type="submit" class="btn btn-primary btn-sm">
+              Create
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" ng-click="vm.close()">
+              Close
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+</section>

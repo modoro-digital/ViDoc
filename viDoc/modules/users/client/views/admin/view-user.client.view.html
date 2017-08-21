@@ -1,0 +1,46 @@
+<section class="content">
+  <div class="box box-success">
+    <div class="box-header with-border">
+      <h3 class="box-title" ng-bind="vm.user.username"></h3>
+      <div class="pull-right box-tools">
+        <a class="btn btn-primary btn-sm" ui-sref="admin.user-edit({userId: vm.user._id})">
+          <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn btn-danger btn-sm" ng-click="vm.remove()" ng-if="!vm.isContextUserSelf()">
+          <i class="glyphicon glyphicon-trash"></i>
+        </a>
+      </div>
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-3"><strong>First Name</strong></div>
+        <div class="col-md-6" ng-bind="vm.user.firstName"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>Last Name</strong></div>
+        <div class="col-md-6" ng-bind="vm.user.lastName"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>Email</strong></div>
+        <div class="col-md-6" ng-bind="vm.user.email"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>Provider</strong></div>
+        <div class="col-md-6" ng-bind="vm.user.provider"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>Created</strong></div>
+        <div class="col-md-6" ng-bind="vm.user.created"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>Roles</strong></div>
+        <div class="col-md-6" ng-bind="vm.user.roles"></div>
+      </div>
+    </div>
+  </div>
+</section>
