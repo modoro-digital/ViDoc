@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Folders</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="folder in vm.folders"
+       ui-sref="folders.view({ folderId: folder._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="folder.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="folder.user" ng-bind="folder.user.displayName"></span>
+        <span ng-if="!folder.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="folder.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.folders.$resolved && !vm.folders.length">
+    No Folders yet, why don't you <a ui-sref="folders.create">create one</a>?
+  </div>
+</section>
