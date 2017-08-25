@@ -1,0 +1,48 @@
+<section>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li ng-if="vm.folder._id"><a ui-sref="folders.view({ folderName: vm.folderName})">
+        <span class="glyphicon glyphicon-arrow-left" 
+        style="font-size: 12px;padding-right: 8px"></span> Back</a></li>
+        <li ng-if="!vm.folder._id"><a ui-sref="folders.list">
+        <span class="glyphicon glyphicon-arrow-left" 
+        style="font-size: 12px;padding-right: 8px"></span> Back</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-if="vm.folder._id"><a href="#" ng-click="vm.remove()""><span class="glyphicon glyphicon-trash" style="font-size: 12px"></span> Delete</a></li>
+      </ul>
+    </div>
+  </nav>
+</section>
+<section style="padding: 0 16px">
+  <div class="">
+    <h1>{{vm.folder._id ? 'Edit Folder' : 'New Folder'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.folderForm" class="form-horizontal" ng-submit="vm.save(vm.form.folderForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Name</label>
+          <input name="name" type="text" ng-model="vm.folder.name" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.folderForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Folder name is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="describe">Describe</label>
+          <textarea name="describe" ng-model="vm.folder.describe" id="describe" class="form-control" placeholder="Describe" required></textarea>
+          <div ng-messages="vm.form.folderForm.describe.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Describe name is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.folder._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

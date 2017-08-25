@@ -1,38 +1,44 @@
 'use strict';
 
 /**
- * Module dependencies
+ * Module dependencies.
  */
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 /**
- * Article Schema
+ * Folder Schema
  */
-var ArticleSchema = new Schema({
+var FolderSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
   },
-  title: {
+  name: {
     type: String,
-    default: '',
-    trim: true,
-    required: 'Title cannot be blank'
+    trim: true
   },
-  content: {
+  describe: {
     type: String,
     default: '',
     trim: true
   },
-  user: {
+  articles: {
+    type: Array,
+    default: []
+  },
+  subfolders: {
+    type: Array,
+    default: []
+  },
+  project: {
     type: Schema.ObjectId,
     ref: 'User'
   },
-  folder: {
+  user: {
     type: Schema.ObjectId,
-    ref: 'Folder'
+    ref: 'User'
   }
 });
 
-mongoose.model('Article', ArticleSchema);
+mongoose.model('Folder', FolderSchema);

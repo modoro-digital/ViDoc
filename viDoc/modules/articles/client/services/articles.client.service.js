@@ -8,9 +8,10 @@
   ArticlesService.$inject = ['$resource', '$log'];
 
   function ArticlesService($resource, $log) {
-    var Article = $resource('/api/articles/:articleId', {
-      articleId: '@_id'
-    }, {
+    var Article = $resource('/api/folders/:folderId/articles/:articleId', {
+        folderId: '@folder',
+        articleId: '@_id'
+      }, {
       update: {
         method: 'PUT'
       }

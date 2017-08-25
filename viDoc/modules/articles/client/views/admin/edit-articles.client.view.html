@@ -1,39 +1,33 @@
 <!-- Content Header (Page header) -->
-<section class="content-header">
-  <h1>
-    Article
-    <small>Article detail</small>
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Article</li>
-  </ol>
+<section>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li ng-if="!vm.inline"><a ui-sref="folders.view({ folderName: vm.folderNameUrl })">
+        <span class="glyphicon glyphicon-folder-close" 
+        style="font-size: 12px;padding-right: 8px"></span>{{vm.folderNameNav}}</a></li>
+        <li ng-if="vm.inline"><a href="#" ng-click="vm.close()"><span class="glyphicon glyphicon-arrow-left" style="font-size: 12px"></span> Back</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-if="!vm.inline"><a href="#" ng-click="vm.editor()"><span class="glyphicon glyphicon-pencil" style="font-size: 12px"></span> Edit</a></li>
+        <li ng-if="!vm.inline"><a href="#" ng-click="vm.remove()""><span class="glyphicon glyphicon-trash" style="font-size: 12px"></span> Delete</a></li>
+        <li ng-if="vm.inline"><a href="#" ng-click="vm.save()""><span class="glyphicon glyphicon-save-file" style="font-size: 12px"></span> Save Article</a></li>
+      </ul>
+    </div>
+  </nav>
 </section>
 <section class="content">
-  <div class="box box-success">
-    <div class="box-header with-border">
-      <h3 class="box-title">{{vm.article._id ? vm.article.title : 'New Article'}}</h3>
-      <div class="pull-right box-tools" ng-if="!vm.inline">
-        <button type="button" ng-if="vm.article._id" class="btn btn-primary btn-sm" title="Remove" ng-click="vm.editor()">
-          <i class="glyphicon glyphicon-pencil"></i>
-        </button>
-        <button type="button" ng-if="vm.article._id" class="btn btn-danger btn-sm" title="Remove" ng-click="vm.remove()">
-          <i class="glyphicon glyphicon-trash"></i>
-        </button>
-      </div>
+  <div class="box">
+    <div class="box-header with-border" ng-if="!vm.inline">
+      <h3 class="box-title" ng-bind="vm.article.title"></h3>
     </div>
     <div class="box-body">
+      <div class="form-group" ng-if="vm.inline">
+        <label class="control-label" for="title">Title</label>
+        <input name="title" type="text" ng-model="vm.article.title" id="title" class="form-control" placeholder="Title" required autofocus>
+      </div>
       <div id="editor2" contenteditable="{{vm.inline}}" style="padding: 20px" 
       ng-bind-html="vm.deliberatelyTrustDangerousSnippet()">
-      </div>
-      <div style="margin-top: 10px; text-align: right">
-        <button type="button" ng-if="vm.inline" class="btn btn-primary btn-sm" ng-click="vm.save()">
-          update
-        </button>
-        <button type="button" ng-if="vm.inline" class="btn btn-danger btn-sm" 
-        ng-click="vm.close()">
-          close
-        </button>
       </div>
     </div>
 </section>

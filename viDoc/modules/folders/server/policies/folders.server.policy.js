@@ -9,47 +9,47 @@ var acl = require('acl');
 acl = new acl(new acl.memoryBackend());
 
 /**
- * Invoke Articles Permissions
+ * Invoke Folders Permissions
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin'],
     allows: [{
-      resources: '/api/folders/:folderId/articles',
+      resources: '/api/folders',
       permissions: '*'
     }, {
-      resources: '/api/folders/:folderId/articles/:articleId',
+      resources: '/api/folders/:folderId',
       permissions: '*'
     }]
   }, {
     roles: ['user'],
     allows: [{
-      resources: '/api/folders/:folderId/articles',
+      resources: '/api/folders',
       permissions: ['*']
     }, {
-      resources: '/api/folders/:folderId/articles/:articleId',
+      resources: '/api/folders/:folderId',
       permissions: ['*']
     }]
   }, {
     roles: ['guest'],
     allows: [{
-      resources: '/api/articles',
+      resources: '/api/folders',
       permissions: ['get']
     }, {
-      resources: '/api/articles/:articleId',
+      resources: '/api/folders/:folderId',
       permissions: ['get']
     }]
   }]);
 };
 
 /**
- * Check If Articles Policy Allows
+ * Check If Folders Policy Allows
  */
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];
 
-  // If an article is being processed and the current user created it then allow any manipulation
-  if (req.article && req.user && req.article.user && req.article.user.id === req.user.id) {
+  // If an Folder is being processed and the current user created it then allow any manipulation
+  if (req.folder && req.user && req.folder.user && req.folder.user.id === req.user.id) {
     return next();
   }
 

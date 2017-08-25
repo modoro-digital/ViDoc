@@ -15,6 +15,8 @@
     vm.html = '';
     vm.article = article;
     vm.authentication = Authentication;
+    vm.folderNameUrl = $state.params.folderName;
+    vm.folderNameNav = $state.params.folderName.replace(/-/gi, ' ');
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
@@ -65,7 +67,9 @@
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {
         vm.article.$remove(function() {
-          $state.go('admin.articles.list');
+          $state.go('folders.view', {
+            folderName: vm.folderNameUrl
+          });
           Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Article deleted successfully!' });
         });
       }
@@ -82,7 +86,10 @@
 
       function successCallback(res) {
         vm.x.destroy();
-        $state.go('admin.articles.list'); // should we send the User to the list or the updated Article's view?
+        $state.go('folders.view', {
+          folderName: vm.folderNameUrl
+        });
+        // should we send the User to the list or the updated Article's view?
         Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Article saved successfully!' });
       }
 
