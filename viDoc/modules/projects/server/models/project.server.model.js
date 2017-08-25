@@ -16,6 +16,26 @@ var ProjectSchema = new Schema({
     required: 'Please fill Project name',
     trim: true
   },
+    folders :{
+        type: Array,
+        default: []
+},
+    articles :{
+        type : String,
+        default:[]
+    },
+    tag:{
+         type: String,
+          default: []
+    },
+    userID :{
+        type: Schema.ObjectId,
+        default: []
+    },
+    description :{
+        type: String,
+        default: []
+    },
   created: {
     type: Date,
     default: Date.now

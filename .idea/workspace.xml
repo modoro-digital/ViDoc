@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31c12675-2c19-4d43-a1eb-1b51f456634f" name="Default" comment="" />
+    <list default="true" id="31c12675-2c19-4d43-a1eb-1b51f456634f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/create-project.client.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/views/create-project.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/bower.json" afterPath="$PROJECT_DIR$/viDoc/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/config/assets/default.js" afterPath="$PROJECT_DIR$/viDoc/config/assets/default.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/articles/client/config/articles.client.menus.js" afterPath="$PROJECT_DIR$/viDoc/modules/articles/client/config/articles.client.menus.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/core/client/css/core.css" afterPath="$PROJECT_DIR$/viDoc/modules/core/client/css/core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/core/client/views/sidebar.client.view.html" afterPath="$PROJECT_DIR$/viDoc/modules/core/client/views/sidebar.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/core/server/views/index.server.view.html" afterPath="$PROJECT_DIR$/viDoc/modules/core/server/views/index.server.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/core/server/views/layout.server.view.html" afterPath="$PROJECT_DIR$/viDoc/modules/core/server/views/layout.server.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.routes.js" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/list-projects.client.controller.js" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/list-projects.client.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/projects.client.controller.js" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/projects.client.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/client/projects.client.module.js" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/projects.client.module.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/client/services/projects.client.service.js" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/services/projects.client.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/client/views/form-project.client.view.html" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/views/form-project.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/server/models/project.server.model.js" afterPath="$PROJECT_DIR$/viDoc/modules/projects/server/models/project.server.model.js" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,32 +28,73 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="chat.client.menus.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/client/config/chat.client.menus.js">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="form-project.client.view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/views/form-project.client.view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="350">
+              <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#ui-view#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#1;n#ui-view#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#a#0;n#div#1;n#ui-view#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#0;n#div#0;n#a#0;n#div#1;n#ui-view#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#a#0;n#div#1;n#ui-view#0;n#section#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.server.view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viDoc/modules/core/server/views/index.server.view.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="6" column="61" lean-forward="false" selection-start-line="6" selection-start-column="61" selection-end-line="6" selection-end-column="61" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="core.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viDoc/modules/core/client/css/core.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="673">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="projects.client.config.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.config.js">
+      <file leaf-file-name="create-project.client.view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/views/create-project.client.view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="19" column="39" lean-forward="true" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+            <state relative-caret-position="0">
+              <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
+              <folding>
+                <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#fieldset#0;n#form#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list-projects.client.view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/views/list-projects.client.view.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="13" column="35" lean-forward="false" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="projects.client.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/controllers/projects.client.controller.js">
+      <file leaf-file-name="view-project.client.view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/views/view-project.client.view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="175">
+              <caret line="7" column="50" lean-forward="false" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -44,68 +103,28 @@
       <file leaf-file-name="projects.client.module.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/projects.client.module.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chat.client.controller.tests.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/tests/client/chat.client.controller.tests.js">
+      <file leaf-file-name="projects.client.controller.tests.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/tests/client/projects.client.controller.tests.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-150">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="1725">
+              <caret line="69" column="14" lean-forward="false" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chat.client.routes.tests.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/tests/client/chat.client.routes.tests.js">
+      <file leaf-file-name="projects.client.config.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-977">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chat.e2e.tests.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/tests/e2e/chat.e2e.tests.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chat.socket.tests.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/tests/server/chat.socket.tests.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chat.server.socket.config.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/server/sockets/chat.server.socket.config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-202">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chat.client.module.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/client/chat.client.module.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="66" />
+            <state relative-caret-position="71">
+              <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -113,14 +132,58 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>btn btn-info btn-sm</find>
+      <find>showTabDialog</find>
+      <find>Articles</find>
+      <find>vm.project._id</find>
+      <find>xhr.send(isUndefined(post) ? null : post)</find>
+      <find>/api</find>
+      <find>vm.save</find>
+      <find>.list-group-item-heading</find>
+    </findStrings>
+    <dirStrings>
+      <dir>E:\TT\Vi-Doc\viDoc\modules\articles</dir>
+      <dir>E:\TT\Vi-Doc\viDoc</dir>
+      <dir>E:\TT\Vi-Doc</dir>
+    </dirStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/viDoc/bower.json" />
+        <option value="$PROJECT_DIR$/viDoc/modules/projects/server/models/project.server.model.js" />
+        <option value="$PROJECT_DIR$/viDoc/modules/articles/client/config/articles.client.menus.js" />
         <option value="$PROJECT_DIR$/viDoc/modules/projects/client/projects.client.module.js" />
+        <option value="$PROJECT_DIR$/viDoc/modules/projects/server/routes/projects.server.routes.js" />
+        <option value="$PROJECT_DIR$/viDoc/config/assets/default.js" />
+        <option value="$PROJECT_DIR$/viDoc/modules/core/server/views/layout.server.view.html" />
+        <option value="$PROJECT_DIR$/viDoc/modules/projects/client/views/form-project.tmpl.html" />
+        <option value="$PROJECT_DIR$/viDoc/modules/core/client/views/sidebar.client.view.html" />
+        <option value="$PROJECT_DIR$/viDoc/modules/projects/client/views/list-projects.client.view.html" />
+        <option value="$PROJECT_DIR$/viDoc/modules/projects/client/services/projects.client.service.js" />
+        <option value="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/list-projects.client.controller.js" />
+        <option value="$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.routes.js" />
         <option value="$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.config.js" />
+        <option value="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/projects.client.controller.js" />
+        <option value="$PROJECT_DIR$/viDoc/modules/projects/client/views/form-project-folder.view.html" />
+        <option value="$PROJECT_DIR$/viDoc/modules/projects/client/views/form-project.client.view.html" />
+        <option value="$PROJECT_DIR$/viDoc/modules/core/server/views/index.server.view.html" />
+        <option value="$PROJECT_DIR$/viDoc/modules/core/client/css/core.css" />
+        <option value="$PROJECT_DIR$/viDoc/modules/projects/client/views/create-project.client.view.html" />
+        <option value="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/create-project.client.controller.js" />
       </list>
     </option>
   </component>
@@ -142,8 +205,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="525" />
-    <option name="y" value="87" />
+    <option name="x" value="848" />
+    <option name="y" value="93" />
     <option name="width" value="969" />
     <option name="height" value="990" />
   </component>
@@ -162,8 +225,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -175,6 +236,26 @@
               <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
               <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="env" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
@@ -205,6 +286,153 @@
               <item name="articles" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="articles" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="articles" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="articles" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="articles" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="articles" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="articles" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="models" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="chat" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="chat" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="chat" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="core" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="core" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="core" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="core" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="core" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="core" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="core" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="core" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
@@ -254,6 +482,68 @@
               <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="projects" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="projects" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="projects" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="projects" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="projects" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="models" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="projects" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="policies" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="projects" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="routes" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="projects" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="tests" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -269,18 +559,46 @@
               <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
               <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="projects" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tests" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="e2e" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="projects" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tests" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Vi-Doc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vi-Doc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="viDoc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="lib" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -304,33 +622,37 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1503386999585</updated>
-      <workItem from="1503387004942" duration="3180000" />
+      <workItem from="1503387004942" duration="9098000" />
+      <workItem from="1503451973917" duration="10238000" />
+      <workItem from="1503471212070" duration="9908000" />
+      <workItem from="1503538132824" duration="23888000" />
+      <workItem from="1503644267600" duration="7146000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3180000" />
+    <option name="totallyTimeSpent" value="60278000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22717509" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23361976" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.087104075" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -345,122 +667,384 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/views/view-article.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/config/env/default.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-675">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/views/form-project.tmpl.html" />
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/views/admin/edit-articles.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/views/admin/create-articles.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="25" column="16" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/config/articles.client.routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-200">
+          <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/config/articles-admin.client.routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/config/articles-admin.client.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/views/list-articles.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-70">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/tests/server/project.server.model.tests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1002">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/core/client/config/core-admin.client.menus.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/core/client/config/core-admin.client.routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/core/client/config/core.client.routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/core/client/config/core.client.route-filter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-727">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/core/client/core.client.module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/tests/e2e/projects.e2e.tests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/views/admin/list-articles.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="39" column="8" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="39" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/tests/client/projects.client.routes.tests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/tests/server/project.server.routes.tests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6600">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/controllers/admin/edit-articles.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1772">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/server/models/project.server.model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+        <state relative-caret-position="249">
+          <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/public/lib/angular/angular.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7673">
+          <caret line="12264" column="6" lean-forward="false" selection-start-line="12264" selection-start-column="6" selection-end-line="12264" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/core/server/views/layout.server.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/client/config/chat.client.menus.js">
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/core/client/views/sidebar.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="28" column="34" lean-forward="true" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/core/client/config/core.client.menus.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/config/assets/default.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="29" column="42" lean-forward="true" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/config/articles.client.menus.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/server/controllers/projects.server.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/server/config/projects.server.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/server/policies/projects.server.policy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-375">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/server/routes/projects.server.routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/controllers/list-articles.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/controllers/articles.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/controllers/admin/list-articles.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/articles/client/controllers/admin/create-articles.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3">
+          <caret line="13" column="39" lean-forward="true" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/client/controllers/chat.client.controller.js">
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/tests/client/list-projects.client.controller.tests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-1575">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/services/projects.client.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/controllers/list-projects.client.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="300">
+          <caret line="12" column="15" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-525">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1075">
+          <caret line="43" column="57" lean-forward="false" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/services/projects.client.service.js">
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/views/list-projects.client.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/client/chat.client.module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/tests/client/chat.client.controller.tests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/tests/client/chat.client.routes.tests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-977">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/tests/e2e/chat.e2e.tests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/tests/server/chat.socket.tests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viDoc/modules/chat/server/sockets/chat.server.socket.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-202">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="325">
+          <caret line="13" column="35" lean-forward="false" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/projects.client.module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/tests/client/projects.client.controller.tests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1725">
+          <caret line="69" column="14" lean-forward="false" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/controllers/projects.client.controller.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/views/form-project-folder.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="63" lean-forward="true" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/views/form-project.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#ui-view#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#1;n#ui-view#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#a#0;n#div#1;n#ui-view#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#div#0;n#a#0;n#div#1;n#ui-view#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#a#0;n#div#1;n#ui-view#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/core/server/views/index.server.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="61" lean-forward="false" selection-start-line="6" selection-start-column="61" selection-end-line="6" selection-end-column="61" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/core/client/css/core.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="673">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/views/create-project.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#fieldset#0;n#form#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/views/view-project.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="50" lean-forward="false" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/controllers/create-project.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="19" column="39" lean-forward="true" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        <state relative-caret-position="71">
+          <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
           <folding />
         </state>
       </provider>

@@ -17,14 +17,17 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
-
+    vm.close= close;
     // Remove existing Project
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {
         vm.project.$remove($state.go('projects.list'));
       }
     }
+      function close() {
 
+          $state.go('projects');
+      }
     // Save Project
     function save(isValid) {
       if (!isValid) {
@@ -40,9 +43,7 @@
       }
 
       function successCallback(res) {
-        $state.go('projects.view', {
-          projectId: res._id
-        });
+        $state.go('projects');
       }
 
       function errorCallback(res) {

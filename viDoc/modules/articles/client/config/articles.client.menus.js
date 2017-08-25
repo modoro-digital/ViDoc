@@ -21,5 +21,6 @@
       state: 'articles.list',
       roles: ['*']
     });
+
   }
 }());

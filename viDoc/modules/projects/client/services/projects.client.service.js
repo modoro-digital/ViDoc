@@ -9,7 +9,7 @@
   ProjectsService.$inject = ['$resource'];
 
   function ProjectsService($resource) {
-    return $resource('api/projects/:projectId', {
+    return $resource('/api/projects/:projectId', {
       projectId: '@_id'
     }, {
       update: {
