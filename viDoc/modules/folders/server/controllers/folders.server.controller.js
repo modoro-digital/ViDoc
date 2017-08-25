@@ -105,9 +105,9 @@ exports.list = function(req, res) {
 /**
  * Folder middleware
  */
-exports.folderByID = function(req, res, next, name) {
-  if (mongoose.Types.ObjectId.isValid(name)) {
-    Folder.findById(name)
+exports.folderByID = function(req, res, next, id) {
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    Folder.findById(id)
     .populate('user', 'displayName').exec(function (err, folder) {
       if (err) {
         return next(err);
@@ -120,8 +120,8 @@ exports.folderByID = function(req, res, next, name) {
       next();
     });
   } else {
-    var name = name.replace(/-/gi, ' ');
-    Folder.findOne({ name: { $regex: name, $options: "i" } }).populate('user', 'displayName').exec(function (err, folder) {
+    var name = id.replace(/-/gi, ' ');
+    Folder.findOne({ name: { $regex: name, $options: 'i' } }).populate('user', 'displayName').exec(function (err, folder) {
       if (err) {
         return next(err);
       } else if (!folder) {

@@ -24,7 +24,7 @@ exports.create = function (req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      folder.articles.push(article._id)
+      folder.articles.push(article._id);
       folder.save(function (err) {
         if (err) {
           return res.status(422).send({
@@ -34,7 +34,7 @@ exports.create = function (req, res) {
         res.json(article);
       });
     }
-  })
+  });
 };
 
 /**
@@ -132,7 +132,7 @@ exports.articleByID = function (req, res, next, id) {
     });
   } else {
     var title = id.replace(/-/gi, ' ');
-    Article.findOne({ $and: [{ title: { $regex: title, $options: "i" } }, { folder: req.folder._id }]})
+    Article.findOne({ $and: [{ title: { $regex: title, $options: 'i' } }, { folder: req.folder._id }] })
     .populate('user', 'displayName').exec(function (err, article) {
       if (err) {
         return next(err);

@@ -12,7 +12,7 @@
 
     vm.folders = FoldersService.query();
     vm.folderName = function (name) {
-    	return name.replace(/ /gi, '-').toLowerCase();
-    }
+      return name.replace(/ /gi, '-').toLowerCase();
+    };
   }
 }());

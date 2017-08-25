@@ -20,7 +20,7 @@
     vm.save = save;
     vm.articleName = function (name) {
       return name.replace(/ /gi, '-').toLowerCase();
-    }
+    };
     // Remove existing Folder
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {

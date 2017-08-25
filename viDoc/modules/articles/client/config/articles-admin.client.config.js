@@ -9,6 +9,5 @@
   menuConfig.$inject = ['menuService'];
 
   function menuConfig(Menus) {
-    
   }
 }());

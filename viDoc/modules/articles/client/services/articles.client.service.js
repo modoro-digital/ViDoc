@@ -9,9 +9,9 @@
 
   function ArticlesService($resource, $log) {
     var Article = $resource('/api/folders/:folderId/articles/:articleId', {
-        folderId: '@folder',
-        articleId: '@_id'
-      }, {
+      folderId: '@folder',
+      articleId: '@_id'
+    }, {
       update: {
         method: 'PUT'
       }

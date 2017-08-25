@@ -9,7 +9,6 @@
 
   function CreateArticlesAdminController($scope, $state, $window, article, Authentication, Notification, $stateParams) {
     var vm = this;
-    
     vm.article = article;
     vm.authentication = Authentication;
     vm.form = {};
