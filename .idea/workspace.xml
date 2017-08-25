@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31c12675-2c19-4d43-a1eb-1b51f456634f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/create-project.client.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/views/create-project.client.view.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/bower.json" afterPath="$PROJECT_DIR$/viDoc/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/config/assets/default.js" afterPath="$PROJECT_DIR$/viDoc/config/assets/default.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/articles/client/config/articles.client.menus.js" afterPath="$PROJECT_DIR$/viDoc/modules/articles/client/config/articles.client.menus.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/core/client/css/core.css" afterPath="$PROJECT_DIR$/viDoc/modules/core/client/css/core.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/core/client/views/sidebar.client.view.html" afterPath="$PROJECT_DIR$/viDoc/modules/core/client/views/sidebar.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/core/server/views/index.server.view.html" afterPath="$PROJECT_DIR$/viDoc/modules/core/server/views/index.server.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/core/server/views/layout.server.view.html" afterPath="$PROJECT_DIR$/viDoc/modules/core/server/views/layout.server.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.routes.js" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/list-projects.client.controller.js" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/list-projects.client.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/projects.client.controller.js" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/projects.client.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/client/projects.client.module.js" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/projects.client.module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/client/services/projects.client.service.js" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/services/projects.client.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/client/views/form-project.client.view.html" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/views/form-project.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/server/models/project.server.model.js" afterPath="$PROJECT_DIR$/viDoc/modules/projects/server/models/project.server.model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.config.js" afterPath="$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.config.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -123,8 +108,8 @@
       <file leaf-file-name="projects.client.config.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+            <state relative-caret-position="375">
+              <caret line="15" column="7" lean-forward="false" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -176,7 +161,6 @@
         <option value="$PROJECT_DIR$/viDoc/modules/projects/client/services/projects.client.service.js" />
         <option value="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/list-projects.client.controller.js" />
         <option value="$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.routes.js" />
-        <option value="$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.config.js" />
         <option value="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/projects.client.controller.js" />
         <option value="$PROJECT_DIR$/viDoc/modules/projects/client/views/form-project-folder.view.html" />
         <option value="$PROJECT_DIR$/viDoc/modules/projects/client/views/form-project.client.view.html" />
@@ -184,6 +168,7 @@
         <option value="$PROJECT_DIR$/viDoc/modules/core/client/css/core.css" />
         <option value="$PROJECT_DIR$/viDoc/modules/projects/client/views/create-project.client.view.html" />
         <option value="$PROJECT_DIR$/viDoc/modules/projects/client/controllers/create-project.client.controller.js" />
+        <option value="$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.config.js" />
       </list>
     </option>
   </component>
@@ -204,7 +189,7 @@
     <handled-path value="$PROJECT_DIR$/viDoc/node_modules" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="848" />
     <option name="y" value="93" />
     <option name="width" value="969" />
@@ -626,15 +611,15 @@
       <workItem from="1503451973917" duration="10238000" />
       <workItem from="1503471212070" duration="9908000" />
       <workItem from="1503538132824" duration="23888000" />
-      <workItem from="1503644267600" duration="7146000" />
+      <workItem from="1503644267600" duration="7768000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60278000" />
+    <option name="totallyTimeSpent" value="60900000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23361976" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -1043,8 +1028,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/viDoc/modules/projects/client/config/projects.client.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+        <state relative-caret-position="375">
+          <caret line="15" column="7" lean-forward="false" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
           <folding />
         </state>
       </provider>
