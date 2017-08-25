@@ -2,14 +2,14 @@
   'use strict';
 
   angular
-    .module('articles.admin')
+    .module('articles')
     .controller('CreateArticlesAdminController', CreateArticlesAdminController);
 
-  CreateArticlesAdminController.$inject = ['$scope', '$state', '$window', 'articleResolve', 'Authentication', 'Notification'];
+  CreateArticlesAdminController.$inject = ['$scope', '$state', '$window', 'articleResolve', 'Authentication', 'Notification', '$stateParams'];
 
-  function CreateArticlesAdminController($scope, $state, $window, article, Authentication, Notification) {
+  function CreateArticlesAdminController($scope, $state, $window, article, Authentication, Notification, $stateParams) {
     var vm = this;
-
+    
     vm.article = article;
     vm.authentication = Authentication;
     vm.form = {};
@@ -40,7 +40,9 @@
     // Remove existing Article
     function close() {
       vm.content.destroy();
-      $state.go('admin.articles.list');
+      $state.go('folders.view', {
+        folderName: $state.params.folderName
+      });
     }
 
     // Save Article
@@ -51,13 +53,16 @@
       }
 
       vm.article.content = vm.content.getData();
-      // Create a new article, or update the current instance
+      vm.article.folder = $state.params.folderName;
       vm.article.createOrUpdate()
         .then(successCallback)
         .catch(errorCallback);
 
       function successCallback(res) {
-        $state.go('admin.articles.list'); // should we send the User to the list or the updated Article's view?
+        $state.go('folders.view', {
+          folderName: $state.params.folderName
+        });
+        // should we send the User to the list or the updated Article's view?
         Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Article saved successfully!' });
       }
 

@@ -12,7 +12,6 @@
     menuService.addMenuItem('sidebar', {
       title: 'Folders',
       state: 'folders',
-      type: 'dropdown',
       roles: ['*']
     });
 
@@ -20,13 +19,6 @@
     menuService.addSubMenuItem('sidebar', 'folders', {
       title: 'List Folders',
       state: 'folders.list'
-    });
-
-    // Add the dropdown create item
-    menuService.addSubMenuItem('sidebar', 'folders', {
-      title: 'Create Folder',
-      state: 'folders.create',
-      roles: ['user']
     });
   }
 }());

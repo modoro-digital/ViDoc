@@ -28,6 +28,10 @@ var ArticleSchema = new Schema({
   user: {
     type: Schema.ObjectId,
     ref: 'User'
+  },
+  folder: {
+    type: Schema.ObjectId,
+    ref: 'Folder'
   }
 });
 

@@ -18,18 +18,26 @@ var FolderSchema = new Schema({
     type: String,
     trim: true
   },
-  projectId: {
-    type: String
+  describe: {
+    type: String,
+    default: '',
+    trim: true
   },
   articles: {
-    type: Array
-  },
-  folders: {
     type: Array,
     default: []
   },
-  userId: {
-    type: String
+  subfolders: {
+    type: Array,
+    default: []
+  },
+  project: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  },
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User'
   }
 });
 

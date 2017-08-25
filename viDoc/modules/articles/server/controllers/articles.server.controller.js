@@ -6,6 +6,7 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Article = mongoose.model('Article'),
+  Folder = mongoose.model('Folder'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
@@ -13,17 +14,27 @@ var path = require('path'),
  */
 exports.create = function (req, res) {
   var article = new Article(req.body);
+  var folder = req.folder;
   article.user = req.user;
+  article.folder = req.folder;
 
-  article.save(function (err) {
+  article.save(err => {
     if (err) {
       return res.status(422).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(article);
+      folder.articles.push(article._id)
+      folder.save(function (err) {
+        if (err) {
+          return res.status(422).send({
+            message: errorHandler.getErrorMessage(err)
+          });
+        }
+        res.json(article);
+      });
     }
-  });
+  })
 };
 
 /**
@@ -65,6 +76,7 @@ exports.update = function (req, res) {
  */
 exports.delete = function (req, res) {
   var article = req.article;
+  var folder = req.folder;
 
   article.remove(function (err) {
     if (err) {
@@ -72,7 +84,16 @@ exports.delete = function (req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(article);
+      folder.articles.splice(folder.articles.indexOf(article._id), 1);
+      folder.save(err => {
+        if (err) {
+          return res.status(422).send({
+            message: errorHandler.getErrorMessage(err)
+          });
+        } else {
+          res.json(article);
+        }
+      });
     }
   });
 };
@@ -96,22 +117,32 @@ exports.list = function (req, res) {
  * Article middleware
  */
 exports.articleByID = function (req, res, next, id) {
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).send({
-      message: 'Article is invalid'
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    Article.findById(id)
+    .populate('user', 'displayName').exec(function (err, article) {
+      if (err) {
+        return next(err);
+      } else if (!article) {
+        return res.status(404).send({
+          message: 'No article with that identifier has been found'
+        });
+      }
+      req.article = article;
+      next();
+    });
+  } else {
+    var title = id.replace(/-/gi, ' ');
+    Article.findOne({ $and: [{ title: { $regex: title, $options: "i" } }, { folder: req.folder._id }]})
+    .populate('user', 'displayName').exec(function (err, article) {
+      if (err) {
+        return next(err);
+      } else if (!article) {
+        return res.status(404).send({
+          message: 'No article with that identifier has been found'
+        });
+      }
+      req.article = article;
+      next();
     });
   }
-
-  Article.findById(id).populate('user', 'displayName').exec(function (err, article) {
-    if (err) {
-      return next(err);
-    } else if (!article) {
-      return res.status(404).send({
-        message: 'No article with that identifier has been found'
-      });
-    }
-    req.article = article;
-    next();
-  });
 };

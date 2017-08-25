@@ -9,7 +9,7 @@
   FoldersService.$inject = ['$resource'];
 
   function FoldersService($resource) {
-    return $resource('api/folders/:folderId', {
+    return $resource('/api/folders/:folderId', {
       folderId: '@_id'
     }, {
       update: {

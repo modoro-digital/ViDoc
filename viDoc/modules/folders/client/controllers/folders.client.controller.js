@@ -13,15 +13,20 @@
 
     vm.authentication = Authentication;
     vm.folder = folder;
+    vm.folderName = vm.folder.name ? vm.folder.name.replace(/ /gi, '-').toLowerCase() : '';
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
-
+    vm.articleName = function (name) {
+      return name.replace(/ /gi, '-').toLowerCase();
+    }
     // Remove existing Folder
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {
-        vm.folder.$remove($state.go('folders.list'));
+        vm.folder.$remove(function() {
+          $state.go('folders.list');
+        });
       }
     }
 
@@ -40,9 +45,7 @@
       }
 
       function successCallback(res) {
-        $state.go('folders.view', {
-          folderId: res._id
-        });
+        $state.go('folders.list');
       }
 
       function errorCallback(res) {

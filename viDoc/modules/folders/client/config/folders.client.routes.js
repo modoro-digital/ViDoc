@@ -16,7 +16,7 @@
       })
       .state('folders.list', {
         url: '',
-        templateUrl: 'modules/folders/client/views/list-folders.client.view.html',
+        templateUrl: '/modules/folders/client/views/list-folders.client.view.html',
         controller: 'FoldersListController',
         controllerAs: 'vm',
         data: {
@@ -25,7 +25,7 @@
       })
       .state('folders.create', {
         url: '/create',
-        templateUrl: 'modules/folders/client/views/form-folder.client.view.html',
+        templateUrl: '/modules/folders/client/views/form-folder.client.view.html',
         controller: 'FoldersController',
         controllerAs: 'vm',
         resolve: {
@@ -37,8 +37,8 @@
         }
       })
       .state('folders.edit', {
-        url: '/:folderId/edit',
-        templateUrl: 'modules/folders/client/views/form-folder.client.view.html',
+        url: '/:folderName/edit',
+        templateUrl: '/modules/folders/client/views/form-folder.client.view.html',
         controller: 'FoldersController',
         controllerAs: 'vm',
         resolve: {
@@ -50,15 +50,15 @@
         }
       })
       .state('folders.view', {
-        url: '/:folderId',
-        templateUrl: 'modules/folders/client/views/view-folder.client.view.html',
+        url: '/:folderName',
+        templateUrl: '/modules/folders/client/views/view-folder.client.view.html',
         controller: 'FoldersController',
         controllerAs: 'vm',
         resolve: {
           folderResolve: getFolder
         },
         data: {
-          pageTitle: 'Folder {{ folderResolve.name }}'
+          pageTitle: '{{ folderResolve.name }}'
         }
       });
   }
@@ -67,7 +67,7 @@
 
   function getFolder($stateParams, FoldersService) {
     return FoldersService.get({
-      folderId: $stateParams.folderId
+      folderId: $stateParams.folderName
     }).$promise;
   }
 
