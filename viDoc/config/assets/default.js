@@ -27,7 +27,7 @@ module.exports = {
         'public/lib/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js',
         'public/lib/AdminLTE/plugins/iCheck/icheck.min.js',
         'public/lib/AdminLTE/dist/js/app.min.js',
-        'public/lib/angular/angular.js',
+          'public/lib/angular/angular.js',
         'public/lib/ckeditor/ckeditor.js',
         'public/lib/angular-animate/angular-animate.js',
         'public/lib/AdminLTE/bootstrap/js/bootstrap.min.js',
