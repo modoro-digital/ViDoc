@@ -11,7 +11,7 @@
     $stateProvider
       .state('folders', {
         abstract: true,
-        url: '/folders',
+        url: '/projects/:projectId/folders',
         template: '<ui-view/>'
       })
       .state('folders.list', {

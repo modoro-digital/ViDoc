@@ -6,6 +6,7 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Project = mongoose.model('Project'),
+  Folder = mongoose.model('Folder'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
@@ -37,8 +38,17 @@ exports.read = function(req, res) {
   // Add a custom field to the Article, for determining if the current User is the "owner".
   // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Article model.
   project.isCurrentUserOwner = req.user && project.user && project.user._id.toString() === req.user._id.toString();
-
-  res.jsonp(project);
+  Folder.find({ _id: project.folders }).populate('user', 'displayName').exec(function (err, folders) {
+    if (err) {
+      return next(err);
+    } else if (!folders) {
+      return res.status(404).send({
+        message: 'No Folder with that identifier has been found'
+      });
+    }
+    project.folders = folders;
+    res.jsonp(project);
+  });
 };
 
 /**
@@ -98,20 +108,30 @@ exports.list = function(req, res) {
 exports.projectByID = function(req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).send({
-      message: 'Project is invalid'
+    var name = id.replace(/-/gi, ' ');
+    Project.findOne({ name: { $regex: name, $options: 'i' } })
+    .populate('user', 'displayName').exec(function (err, project) {
+      if (err) {
+        return next(err);
+      } else if (!project) {
+        return res.status(404).send({
+          message: 'No Project with that identifier has been found'
+        });
+      }
+      req.project = project;
+      next();
+    });
+  } else {
+    Project.findById(id).populate('user', 'displayName').exec(function (err, project) {
+      if (err) {
+        return next(err);
+      } else if (!project) {
+        return res.status(404).send({
+          message: 'No Project with that identifier has been found'
+        });
+      }
+      req.project = project;
+      next();
     });
   }
-
-  Project.findById(id).populate('user', 'displayName').exec(function (err, project) {
-    if (err) {
-      return next(err);
-    } else if (!project) {
-      return res.status(404).send({
-        message: 'No Project with that identifier has been found'
-      });
-    }
-    req.project = project;
-    next();
-  });
 };

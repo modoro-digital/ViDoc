@@ -40,6 +40,7 @@
     function close() {
       vm.content.destroy();
       $state.go('folders.view', {
+        projectId: $state.params.projectId,
         folderName: $state.params.folderName
       });
     }
@@ -58,8 +59,8 @@
         .catch(errorCallback);
 
       function successCallback(res) {
-        $state.go('folders.view', {
-          folderName: $state.params.folderName
+        $state.go('projects.view', {
+          projectId: $state.params.projectId
         });
         // should we send the User to the list or the updated Article's view?
         Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Article saved successfully!' });

@@ -14,6 +14,7 @@
     vm.authentication = Authentication;
     vm.folder = folder;
     vm.folderName = vm.folder.name ? vm.folder.name.replace(/ /gi, '-').toLowerCase() : '';
+    vm.projectId = $state.params.projectId;
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
@@ -25,7 +26,9 @@
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {
         vm.folder.$remove(function() {
-          $state.go('folders.list');
+          $state.go('projects.view', {
+            projectId: vm.projectId
+          });
         });
       }
     }
@@ -45,7 +48,10 @@
       }
 
       function successCallback(res) {
-        $state.go('folders.list');
+        $state.go('folders.view', {
+          projectId: vm.projectId,
+          folderName: res.name.replace(/ /gi, '-').toLowerCase()
+        });
       }
 
       function errorCallback(res) {

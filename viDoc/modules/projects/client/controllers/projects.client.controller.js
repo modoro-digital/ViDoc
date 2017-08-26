@@ -19,15 +19,19 @@
     vm.save = save;
     vm.close= close;
     // Remove existing Project
+    vm.folderName = function (name) {
+      return name.replace(/ /gi, '-').toLowerCase();
+    };
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {
-        vm.project.$remove($state.go('projects.list'));
+        vm.project.$remove(function() {
+          $state.go('projects.list')
+        });
       }
     }
-      function close() {
-
-          $state.go('projects');
-      }
+    function close() {
+      $state.go('projects.list');
+    }
     // Save Project
     function save(isValid) {
       if (!isValid) {
@@ -43,7 +47,7 @@
       }
 
       function successCallback(res) {
-        $state.go('projects');
+        $state.go('projects.list');
       }
 
       function errorCallback(res) {

@@ -11,15 +11,13 @@
 
     $stateProvider
       .state('projects', {
-
+        abstract: true,
         url: '/projects',
-          templateUrl: '/modules/projects/client/views/form-project.client.view.html',
-          controller: 'ProjectsListController',
-          controllerAs: 'vm'
+        template: '<ui-view/>'
       })
       .state('projects.list', {
         url: '',
-          templateUrl: '/modules/projects/client/views/list-projects.client.view.html',
+        templateUrl: '/modules/projects/client/views/list-projects.client.view.html',
         controller: 'ProjectsListController',
         controllerAs: 'vm',
         data: {
@@ -41,7 +39,7 @@
       })
       .state('projects.edit', {
         url: '/:projectId/edit',
-        templateUrl: '/modules/projects/client/views/view-project.client.view.html',
+        templateUrl: '/modules/projects/client/views/create-project.client.view.html',
         controller: 'ProjectsController',
         controllerAs: 'vm',
         resolve: {
@@ -52,6 +50,18 @@
           pageTitle: 'Edit Project {{ projectResolve.name }}'
         }
       })
+      .state('projects.view', {
+        url: '/:projectId',
+        templateUrl: '/modules/projects/client/views/view-project.client.view.html',
+        controller: 'ProjectsController',
+        controllerAs: 'vm',
+        resolve: {
+          projectResolve: getProject
+        },
+        data: {
+          pageTitle: '{{ projectResolve.name }}'
+        }
+      });
   }
 
   getProject.$inject = ['$stateParams', 'ProjectsService'];

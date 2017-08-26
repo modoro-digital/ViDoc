@@ -15,6 +15,7 @@
     vm.html = '';
     vm.article = article;
     vm.authentication = Authentication;
+    vm.projectId = $state.params.projectId;
     vm.folderNameUrl = $state.params.folderName;
     vm.folderNameNav = $state.params.folderName.replace(/-/gi, ' ');
     vm.form = {};
@@ -68,6 +69,7 @@
       if ($window.confirm('Are you sure you want to delete?')) {
         vm.article.$remove(function() {
           $state.go('folders.view', {
+            projectId: vm.projectId,
             folderName: vm.folderNameUrl
           });
           Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Article deleted successfully!' });
@@ -87,6 +89,7 @@
       function successCallback(res) {
         vm.x.destroy();
         $state.go('folders.view', {
+          projectId: vm.projectId,
           folderName: vm.folderNameUrl
         });
         // should we send the User to the list or the updated Article's view?

@@ -12,7 +12,7 @@
     $stateProvider
       .state('articles', {
         abstract: true,
-        url: '/folders/:folderName/articles',
+        url: '/projects/:projectId/folders/:folderName/articles',
         template: '<ui-view/>'
       })
       .state('articles.list', {

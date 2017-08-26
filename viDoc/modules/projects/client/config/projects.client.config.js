@@ -9,10 +9,5 @@
 
   function menuConfig(menuService) {
     // Set top bar menu items
-    menuService.addMenuItem('sidebar', {
-      title: 'Projects',
-      state: 'projects',
-      roles: ['*']
-    });
   }
 }());

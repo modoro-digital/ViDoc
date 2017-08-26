@@ -11,6 +11,8 @@
     var vm = this;
 
     vm.projects = ProjectsService.query();
-    console.log(vm.projects);
+    vm.projectName = function (name) {
+      return name.replace(/ /gi, '-').toLowerCase();
+    };
   }
 }());
