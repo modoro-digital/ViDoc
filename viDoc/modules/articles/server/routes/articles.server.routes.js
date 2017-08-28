@@ -4,20 +4,32 @@
  * Module dependencies
  */
 var articlesPolicy = require('../policies/articles.server.policy'),
-  articles = require('../controllers/articles.server.controller');
+  articlesFolder = require('../controllers/articles.server.controller'),
+  articlesProject = require('../controllers/articles-project.server.controller');
 
 module.exports = function (app) {
-  // Articles collection routes
-  app.route('/api/folders/:folderId/articles').all(articlesPolicy.isAllowed)
-    .get(articles.list)
-    .post(articles.create);
+  // Articles collection routes in folder
+  app.route('/api/projects/:projectId/folders/:folderId/articles').all(articlesPolicy.isAllowed)
+    .get(articlesFolder.list)
+    .post(articlesFolder.create);
 
-  // Single article routes
-  app.route('/api/folders/:folderId/articles/:articleId').all(articlesPolicy.isAllowed)
-    .get(articles.read)
-    .put(articles.update)
-    .delete(articles.delete);
+  // Single article routes in folder
+  app.route('/api/projects/:projectId/folders/:folderId/articles/:articleId').all(articlesPolicy.isAllowed)
+    .get(articlesFolder.read)
+    .put(articlesFolder.update)
+    .delete(articlesFolder.delete);
+
+  // Articles collection routes in project
+  app.route('/api/projects/:projectId/articles').all(articlesPolicy.isAllowed)
+    .get(articlesProject.list)
+    .post(articlesProject.create);
+
+  // Single article routes in project
+  app.route('/api/projects/:projectId/articles/:articleId').all(articlesPolicy.isAllowed)
+    .get(articlesProject.read)
+    .put(articlesProject.update)
+    .delete(articlesProject.delete);
 
   // Finish by binding the article middleware
-  app.param('articleId', articles.articleByID);
+  app.param('articleId', articlesFolder.articleByID);
 };

@@ -32,6 +32,10 @@ var ArticleSchema = new Schema({
   folder: {
     type: Schema.ObjectId,
     ref: 'Folder'
+  },
+  project: {
+    type: Schema.ObjectId,
+    ref: 'Project'
   }
 });
 

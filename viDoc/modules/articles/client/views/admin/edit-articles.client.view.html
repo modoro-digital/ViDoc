@@ -3,9 +3,10 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-        <li ng-if="!vm.inline"><a ui-sref="folders.view({ projectId: vm.projectId, folderName: vm.folderNameUrl })">
-        <span class="glyphicon glyphicon-folder-close" 
-        style="font-size: 12px;padding-right: 8px"></span>{{vm.folderNameNav}}</a></li>
+        <li ng-if="!vm.inline && vm.folderId"><a ui-sref="folders.view({ projectId: vm.projectId, folderId: vm.folderId })">
+        <span class="glyphicon glyphicon-arrow-left" style="font-size: 12px;padding-right: 8px"></span> Back</a></li>
+        <li ng-if="!vm.inline && !vm.folderId"><a ui-sref="projects.view({ projectId: vm.projectId })">
+        <span class="glyphicon glyphicon-arrow-left" style="font-size: 12px;padding-right: 8px"></span> Back</a></li>
         <li ng-if="vm.inline"><a href="#" ng-click="vm.close()"><span class="glyphicon glyphicon-arrow-left" style="font-size: 12px"></span> Back</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

@@ -8,14 +8,17 @@ var foldersPolicy = require('../policies/folders.server.policy'),
 
 module.exports = function(app) {
   // Folders Routes
-  app.route('/api/folders').all(foldersPolicy.isAllowed)
+  app.route('/api/projects/:projectId/folders').all(foldersPolicy.isAllowed)
     .get(folders.list)
     .post(folders.create);
 
-  app.route('/api/folders/:folderId').all(foldersPolicy.isAllowed)
+  app.route('/api/projects/:projectId/folders/:folderId').all(foldersPolicy.isAllowed)
     .get(folders.read)
     .put(folders.update)
     .delete(folders.delete);
+
+  app.route('/api/projects/:projectId/folders/:folderId/subfolder').all(foldersPolicy.isAllowed)
+    .post(folders.createSub);
 
   // Finish by binding the Folder middleware
   app.param('folderId', folders.folderByID);

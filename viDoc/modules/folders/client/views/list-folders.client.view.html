@@ -6,6 +6,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a ui-sref="folders.create()"><span class="glyphicon glyphicon-plus" style="font-size: 12px"></span> New Folder</a></li>
+
         <li><a href="#"><span class="glyphicon glyphicon-pencil" style="font-size: 12px"></span> Edit</a></li>
         <li><a href="#" ng-click=""><span class="glyphicon glyphicon-trash" style="font-size: 12px"></span> Delete</a></li>
       </ul>
@@ -14,8 +15,7 @@
 </section>
 <section style="padding: 0 16px">
   <div class="page-header">
-    <h1>Project Name</h1>
-  </div>
+</div>
   <div class="list-group">
     <a ng-repeat="folder in vm.folders"
        ui-sref="folders.view({ folderName: vm.folderName(folder.name) })"

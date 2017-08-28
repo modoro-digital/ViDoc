@@ -12,18 +12,10 @@
     $stateProvider
       .state('articles', {
         abstract: true,
-        url: '/projects/:projectId/folders/:folderName/articles',
+        url: '/projects/:projectId/folders/:folderId/articles',
         template: '<ui-view/>'
       })
-      .state('articles.list', {
-        url: '',
-        templateUrl: '/modules/articles/client/views/list-articles.client.view.html',
-        controller: 'ArticlesListController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'Articles List'
-        }
-      }).state('articles.create', {
+      .state('articles.create', {
         url: '/create',
         templateUrl: '/modules/articles/client/views/admin/create-articles.client.view.html',
         controller: 'CreateArticlesAdminController',
@@ -33,7 +25,7 @@
           pageTitle: 'New Articles'
         },
         resolve: {
-          articleResolve: newArticle
+          articleResolve: newArticleFolder
         }
       })
       .state('articles.edit', {
@@ -46,23 +38,70 @@
           pageTitle: '{{articleResolve.title}}'
         },
         resolve: {
-          articleResolve: getArticle
+          articleResolve: getArticleFolder
+        }
+      })
+      .state('article', {
+        abstract: true,
+        url: '/projects/:projectId/articles',
+        template: '<ui-view/>'
+      })
+      .state('article.create', {
+        url: '/create',
+        templateUrl: '/modules/articles/client/views/admin/create-articles.client.view.html',
+        controller: 'CreateArticlesAdminController',
+        controllerAs: 'vm',
+        data: {
+          roles: ['user', 'admin'],
+          pageTitle: 'New Articles'
+        },
+        resolve: {
+          articleResolve: newArticleProject
+        }
+      })
+      .state('article.edit', {
+        url: '/:articleId',
+        templateUrl: '/modules/articles/client/views/admin/edit-articles.client.view.html',
+        controller: 'EditArticlesAdminController',
+        controllerAs: 'vm',
+        data: {
+          roles: ['user', 'admin'],
+          pageTitle: '{{articleResolve.title}}'
+        },
+        resolve: {
+          articleResolve: getArticleProject
         }
       });
   }
 
-  getArticle.$inject = ['$stateParams', 'ArticlesService'];
+  getArticleFolder.$inject = ['$stateParams', 'ArticlesService'];
 
-  function getArticle($stateParams, ArticlesService) {
+  function getArticleFolder($stateParams, ArticlesService) {
     return ArticlesService.get({
-      folderId: $stateParams.folderName,
+      projectId: $stateParams.projectId,
+      folderId: $stateParams.folderId,
       articleId: $stateParams.articleId
     }).$promise;
   }
 
-  newArticle.$inject = ['ArticlesService'];
+  newArticleFolder.$inject = ['ArticlesService'];
 
-  function newArticle(ArticlesService) {
+  function newArticleFolder(ArticlesService) {
     return new ArticlesService();
+  }
+
+  getArticleProject.$inject = ['$stateParams', 'ArticlesServiceProject'];
+
+  function getArticleProject($stateParams, ArticlesServiceProject) {
+    return ArticlesServiceProject.get({
+      projectId: $stateParams.projectId,
+      articleId: $stateParams.articleId
+    }).$promise;
+  }
+
+  newArticleProject.$inject = ['ArticlesServiceProject'];
+
+  function newArticleProject(ArticlesServiceProject) {
+    return new ArticlesServiceProject();
   }
 }());

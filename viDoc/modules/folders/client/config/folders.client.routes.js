@@ -37,7 +37,7 @@
         }
       })
       .state('folders.edit', {
-        url: '/:folderName/edit',
+        url: '/:folderId/edit',
         templateUrl: '/modules/folders/client/views/form-folder.client.view.html',
         controller: 'FoldersController',
         controllerAs: 'vm',
@@ -50,12 +50,24 @@
         }
       })
       .state('folders.view', {
-        url: '/:folderName',
+        url: '/:folderId',
         templateUrl: '/modules/folders/client/views/view-folder.client.view.html',
         controller: 'FoldersController',
         controllerAs: 'vm',
         resolve: {
           folderResolve: getFolder
+        },
+        data: {
+          pageTitle: '{{ folderResolve.name }}'
+        }
+      })
+      .state('folders.subfolder', {
+        url: '/:folderId/subfolder/create',
+        templateUrl: '/modules/folders/client/views/form-folder.client.view.html',
+        controller: 'FoldersController',
+        controllerAs: 'vm',
+        resolve: {
+          folderResolve: newSubfolder
         },
         data: {
           pageTitle: '{{ folderResolve.name }}'
@@ -67,7 +79,8 @@
 
   function getFolder($stateParams, FoldersService) {
     return FoldersService.get({
-      folderId: $stateParams.folderName
+      projectId: $stateParams.projectId,
+      folderId: $stateParams.folderId
     }).$promise;
   }
 
@@ -75,5 +88,11 @@
 
   function newFolder(FoldersService) {
     return new FoldersService();
+  }
+
+  newSubfolder.$inject = ['SubfoldersService'];
+
+  function newSubfolder(SubfoldersService) {
+    return new SubfoldersService();
   }
 }());

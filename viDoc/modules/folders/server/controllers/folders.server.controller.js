@@ -17,7 +17,7 @@ var path = require('path'),
 exports.create = function(req, res) {
   var folder = new Folder(req.body);
   folder.user = req.user;
-  folder.project = req.project || req.user;
+  folder.project = req.project;
 
   folder.save(function(err) {
     if (err) {
@@ -25,7 +25,44 @@ exports.create = function(req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(folder);
+      var project = req.project;
+      project.folders.push(folder._id);
+      project.save(err => {
+        if (err) {
+          return res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+          });
+        }
+        res.jsonp(folder);
+      });
+    }
+  });
+};
+
+/**
+ * Create a subFolder
+ */
+exports.createSub = function(req, res) {
+  var subFolder = new Folder(req.body);
+  subFolder.user = req.user;
+  subFolder.parentfolder = req.folder._id;
+
+  subFolder.save(function(err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      var folder = req.folder;
+      folder.subfolders.push(subFolder._id);
+      folder.save(err => {
+        if (err) {
+          return res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+          });
+        }
+        res.jsonp(subFolder);
+      });
     }
   });
 };
@@ -40,16 +77,26 @@ exports.read = function(req, res) {
   // Add a custom field to the Folder, for determining if the current User is the "owner".
   // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Folder model.
   folder.isCurrentUserOwner = req.user && folder.user && folder.user._id.toString() === req.user._id.toString();
-  Article.find({ _id: folder.articles }).sort('-created').populate('user', 'displayName').exec(function(err, articles) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      folder.articles = articles;
-      res.jsonp(folder);
-    }
-  });
+  Article.find({ _id: folder.articles }, { 'created': 1, 'title': 1, 'user': 1}).sort('-created')
+    .populate('user', 'displayName').exec(function(err, articles) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        folder.articles = articles;
+        Folder.find({ _id: folder.subfolders }).sort('-created')
+          .populate('user', 'displayName').exec(function(err, folders) {
+            if (err) {
+              return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+              });
+            }
+            folder.subfolders = folders;
+            res.jsonp(folder);
+          });
+      }
+    });
 };
 
 /**
@@ -76,6 +123,7 @@ exports.update = function(req, res) {
  */
 exports.delete = function(req, res) {
   var folder = req.folder;
+  var project = req.project;
 
   folder.remove(function(err) {
     if (err) {
@@ -83,7 +131,28 @@ exports.delete = function(req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(folder);
+      if (folder.parentfolder) {
+        Folder.updateOne({ _id: folder.parentfolder }, {
+          $pull: { subfolders: folder._id }
+        }, function (err, parentfolder) {
+          if (err) {
+            return res.status(400).send({
+              message: errorHandler.getErrorMessage(err)
+            });
+          }
+          res.jsonp(folder);
+        });
+      } else {
+        project.folders.splice(project.folders.indexOf(folder._id), 1);
+        project.save(err => {
+          if (err) {
+            return res.status(400).send({
+              message: errorHandler.getErrorMessage(err)
+            });
+          }
+          res.jsonp(folder);
+        });
+      }
     }
   });
 };

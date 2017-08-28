@@ -22,7 +22,7 @@ var ProjectSchema = new Schema({
   },
   articles: {
     type: Array,
-    default:[]
+    default: []
   },
   tag: {
     type: Array,
@@ -32,7 +32,7 @@ var ProjectSchema = new Schema({
     type: Array,
     default: []
   },
-  description :{
+  description: {
     type: String,
     default: ''
   },

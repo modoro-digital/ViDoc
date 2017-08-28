@@ -3,14 +3,13 @@
 
   angular
     .module('articles.services')
-    .factory('ArticlesService', ArticlesService);
+    .factory('ArticlesServiceProject', ArticlesServiceProject);
 
-  ArticlesService.$inject = ['$resource', '$log'];
+  ArticlesServiceProject.$inject = ['$resource', '$log'];
 
-  function ArticlesService($resource, $log) {
-    var Article = $resource('/api/projects/:projectId/folders/:folderId/articles/:articleId', {
+  function ArticlesServiceProject($resource, $log) {
+    var Article = $resource('/api/projects/:projectId/articles/:articleId', {
       projectId: '@project',
-      folderId: '@folder',
       articleId: '@_id'
     }, {
       update: {

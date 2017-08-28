@@ -13,22 +13,26 @@
 
     vm.authentication = Authentication;
     vm.folder = folder;
-    vm.folderName = vm.folder.name ? vm.folder.name.replace(/ /gi, '-').toLowerCase() : '';
     vm.projectId = $state.params.projectId;
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
-    vm.articleName = function (name) {
-      return name.replace(/ /gi, '-').toLowerCase();
-    };
+
     // Remove existing Folder
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {
         vm.folder.$remove(function() {
-          $state.go('projects.view', {
-            projectId: vm.projectId
-          });
+          if (vm.folder.parentfolder) {
+            $state.go('folders.view', {
+              projectId: $state.params.projectId,
+              folderId: vm.folder.parentfolder
+            });
+          } else {
+            $state.go('projects.view', {
+              projectId: $state.params.projectId,
+            });
+          }
         });
       }
     }
@@ -41,17 +45,27 @@
       }
 
       // TODO: move create/update logic to service
+      vm.folder.project = vm.projectId;
       if (vm.folder._id) {
         vm.folder.$update(successCallback, errorCallback);
       } else {
+        if ($state.params.folderId) {
+          vm.folder.parentfolder = $state.params.folderId;
+        }
         vm.folder.$save(successCallback, errorCallback);
       }
 
       function successCallback(res) {
-        $state.go('folders.view', {
-          projectId: vm.projectId,
-          folderName: res.name.replace(/ /gi, '-').toLowerCase()
-        });
+        if (vm.folder.parentfolder) {
+          $state.go('folders.view', {
+            projectId: vm.projectId,
+            folderId: vm.folder.parentfolder
+          });
+        } else {
+          $state.go('projects.view', {
+            projectId: vm.projectId,
+          });
+        }
       }
 
       function errorCallback(res) {
