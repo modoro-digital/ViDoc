@@ -49,37 +49,3 @@
     <a ui-sref="article.create({ projectId: vm.project._id })">create one folder</a>
   </div>
 </section>
-<section style="padding: 0 16px">
-  <div class="list-group">
-    <a class="list-group-item" ng-repeat="project in vm.project.articles"
-       ui-sref="articles.edit({ projectId: vm.projectId, projectName: vm.projectName, articleId: vm.articleName(article.title) })" style="border-right: none;border-left: none;">
-      <div>
-        <span class="glyphicon glyphicon-file" style="font-size: 20px; padding: 6px 8px 0 0;float: left;"></span>
-        <h2 class="list-group-item-heading" style="color: #337ab7" ng-bind="article.title"></h2>
-      </div>
-      <p class="list-group-item-text" style="color: #868686">Posted on
-        <span ng-bind="article.created | date:'mediumDate'"></span> by
-        <span ng-bind="article.user.displayName"></span></p>
-    </a>
-  </div>
-  <div class="alert alert-warning text-center" ng-if="!vm.project.articles.length & !vm.project.folders.length">
-    No article are currently in this project. <a ui-sref="articles.create({projectId: vm.projectId, projectName: vm.projectName })">create one</a>?
-  </div>
-</section>
-<section style="padding: 0 16px">
-  <div class="list-group">
-    <a class="list-group-item" ng-repeat="project in vm.project.articles"
-       ui-sref="articles.edit({ projectId: vm.projectId, projectName: vm.projectName, articleId: vm.articleName(article.title) })" style="border-right: none;border-left: none;">
-      <div>
-        <span class="glyphicon glyphicon-file" style="font-size: 20px; padding: 6px 8px 0 0;float: left;"></span>
-        <h2 class="list-group-item-heading" style="color: #337ab7" ng-bind="article.title"></h2>
-      </div>
-      <p class="list-group-item-text" style="color: #868686">Posted on
-        <span ng-bind="article.created | date:'mediumDate'"></span> by
-        <span ng-bind="article.user.displayName"></span></p>
-    </a>
-  </div>
-  <div class="alert alert-warning text-center" ng-if="!vm.project.articles.length & !vm.project.folders.length">
-    No article are currently in this project. <a ui-sref="articles.create({projectId: vm.projectId, projectName: vm.projectName })">create one</a>?
-  </div>
-</section>
