@@ -15,28 +15,34 @@ exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin'],
     allows: [{
-      resources: '/api/folders',
+      resources: '/api/projects/:projectId/folders',
       permissions: '*'
     }, {
-      resources: '/api/folders/:folderId',
+      resources: '/api/projects/:projectId/folders/:folderId',
+      permissions: '*'
+    }, {
+      resources: '/api/projects/:projectId/folders/:folderId/subfolder',
       permissions: '*'
     }]
   }, {
     roles: ['user'],
     allows: [{
-      resources: '/api/folders',
+      resources: '/api/projects/:projectId/folders',
       permissions: ['*']
     }, {
-      resources: '/api/folders/:folderId',
+      resources: '/api/projects/:projectId/folders/:folderId',
       permissions: ['*']
+    }, {
+      resources: '/api/projects/:projectId/folders/:folderId/subfolder',
+      permissions: '*'
     }]
   }, {
     roles: ['guest'],
     allows: [{
-      resources: '/api/folders',
+      resources: '/api/projects/:projectId/folders',
       permissions: ['get']
     }, {
-      resources: '/api/folders/:folderId',
+      resources: '/api/projects/:projectId/folders/:folderId',
       permissions: ['get']
     }]
   }]);

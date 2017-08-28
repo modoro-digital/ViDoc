@@ -9,10 +9,6 @@
 
   function FoldersListController(FoldersService) {
     var vm = this;
-
     vm.folders = FoldersService.query();
-    vm.folderName = function (name) {
-      return name.replace(/ /gi, '-').toLowerCase();
-    };
   }
 }());

@@ -2,7 +2,7 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-        <li ng-if="vm.folder._id"><a ui-sref="folders.view({ projectId: vm.projectId, folderName: vm.folderName})">
+        <li ng-if="vm.folder._id"><a ui-sref="folders.view({projectId: vm.folder.project, folderId: vm.folder._id})">
         <span class="glyphicon glyphicon-arrow-left" 
         style="font-size: 12px;padding-right: 8px"></span> Back</a></li>
         <li ng-if="!vm.folder._id"><a ui-sref="projects.view({ projectId: vm.projectId })">

@@ -35,6 +35,10 @@ var FolderSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'User'
   },
+  parentfolder: {
+    type: Schema.ObjectId,
+    ref: 'Folder'
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'

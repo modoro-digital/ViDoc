@@ -6,6 +6,7 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Project = mongoose.model('Project'),
+  Article = mongoose.model('Article'),
   Folder = mongoose.model('Folder'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
@@ -40,14 +41,21 @@ exports.read = function(req, res) {
   project.isCurrentUserOwner = req.user && project.user && project.user._id.toString() === req.user._id.toString();
   Folder.find({ _id: project.folders }).populate('user', 'displayName').exec(function (err, folders) {
     if (err) {
-      return next(err);
-    } else if (!folders) {
       return res.status(404).send({
         message: 'No Folder with that identifier has been found'
       });
     }
     project.folders = folders;
-    res.jsonp(project);
+    Article.find({ _id: project.articles }, { 'created': 1, 'title': 1, 'user': 1 }).sort('-created')
+      .populate('user', 'displayName').exec(function (err, articles) {
+        if (err) {
+          return res.status(404).send({
+            message: 'No Folder with that identifier has been found'
+          });
+        }
+        project.articles = articles;
+        res.jsonp(project);
+      });
   });
 };
 

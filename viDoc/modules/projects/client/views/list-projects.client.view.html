@@ -9,7 +9,7 @@
 </section>
 <section>
   <div class="list-group">
-    <a ng-repeat="project in vm.projects" ui-sref="projects.view({ projectId: vm.projectName(project.name) })"
+    <a ng-repeat="project in vm.projects" ui-sref="projects.view({ projectId: project._id })"
        class="list-group-item" style="border-right: none; border-left: none">
       <div style="">
         <span class="glyphicon glyphicon-book" style="float: left; font-size: 20px;padding-top: 6px; padding-right: 16px"></span>

@@ -39,10 +39,16 @@
     // Remove existing Article
     function close() {
       vm.content.destroy();
-      $state.go('folders.view', {
-        projectId: $state.params.projectId,
-        folderName: $state.params.folderName
-      });
+      if ($state.params.folderId) {
+        $state.go('folders.view', {
+          projectId: $state.params.projectId,
+          folderId: $state.params.folderId
+        });
+      } else {
+        $state.go('projects.view', {
+          projectId: $state.params.projectId
+        });
+      }
     }
 
     // Save Article
@@ -53,15 +59,23 @@
       }
 
       vm.article.content = vm.content.getData();
-      vm.article.folder = $state.params.folderName;
+      vm.article.project = $state.params.projectId;
+      vm.article.folder = $state.params.folderId;
       vm.article.createOrUpdate()
         .then(successCallback)
         .catch(errorCallback);
 
       function successCallback(res) {
-        $state.go('projects.view', {
-          projectId: $state.params.projectId
-        });
+        if ($state.params.folderId) {
+          $state.go('folders.view', {
+            projectId: $state.params.projectId,
+            folderId: $state.params.folderId
+          });
+        } else {
+          $state.go('projects.view', {
+            projectId: $state.params.projectId,
+          });
+        }
         // should we send the User to the list or the updated Article's view?
         Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Article saved successfully!' });
       }
