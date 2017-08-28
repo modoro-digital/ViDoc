@@ -14,28 +14,6 @@
     </div>
   </nav>
 </section>
-<section style="padding: 0 16px">
-  <div class="page-header">
-  </div>
-  <div class="list-group">
-    <a ng-repeat="folder in vm.folders"
-       ui-sref="folders.view({ folderName: vm.folderName(folder.name) })"
-       class="list-group-item" style="border-right: none; border-left: none">
-      <div style="">
-        <span class="glyphicon glyphicon-folder-close" style="float: left; font-size: 20px;padding-top: 6px; padding-right: 16px"></span>
-        <h2 class="list-group-item-heading" style="color: #f0ad4e" ng-bind="folder.name"></h2>
-      </div>
-      <div style="color: #868686;margin-top: 8px">
-        <span class="glyphicon glyphicon-triangle-right" style="font-size: 8px; padding: 4px 8px 0 0;float: left;"></span>
-        <span class="glyphicon glyphicon-file" style="font-size: 12px; padding: 2px 8px 0 0;float: left;"></span>
-        <p class="list-group-item-text" ng-bind="folder.articles.length + ' Articles'"></p>
-      </div>
-    </a>
-  </div>
-  <div class="alert alert-warning text-center" ng-if="!vm.folders.length & !vm.folder.articles.length">
-    No Folders yet, why don't you <a ui-sref="folders.create">create one</a>?
-  </div>
-</section>
 
 <section style="padding: 0 16px">
   <div class="page-header">

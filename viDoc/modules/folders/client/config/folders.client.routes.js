@@ -14,15 +14,6 @@
         url: '/projects/:projectId/folders',
         template: '<ui-view/>'
       })
-      .state('folders.list', {
-        url: '',
-        templateUrl: '/modules/folders/client/views/list-folders.client.view.html',
-        controller: 'FoldersListController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'Folders List'
-        }
-      })
       .state('folders.create', {
         url: '/create',
         templateUrl: '/modules/folders/client/views/form-folder.client.view.html',
