@@ -17,8 +17,7 @@ var FolderSchema = new Schema({
   name: {
     type: String,
     trim: true
-  },
-  describe: {
+  }, description: {
     type: String,
     default: '',
     trim: true

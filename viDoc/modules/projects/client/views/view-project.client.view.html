@@ -6,7 +6,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a ui-sref="folders.create({ projectId: vm.folderName(vm.project.name) })"><span class="glyphicon glyphicon-plus" style="font-size: 12px"></span> New Folder</a></li>
-        <li><a ui-sref="projects.edit"><span class="glyphicon glyphicon-pencil" style="font-size: 12px"></span> Edit</a></li>
+        <li><a ui-sref="articles.create()"><span class="glyphicon glyphicon-plus" style="font-size: 12px"></span> New Article</a></li>
+        <li><a ui-sref="projects.edit({ projectId: vm.folderName(vm.project.name) })"><span class="glyphicon glyphicon-pencil" style="font-size: 12px"></span> Edit</a></li>
         <li><a href="#" ng-click="vm.remove()"><span class="glyphicon glyphicon-trash" style="font-size: 12px"></span> Delete</a></li>
       </ul>
     </div>
@@ -34,5 +35,22 @@
   </div>
   <div class="alert alert-warning text-center" ng-if="!vm.project.folders.length">
     No Folders yet, why don't you <a ui-sref="folders.create({ projectId: vm.folderName(vm.project.name) })">create one</a>?
+  </div>
+</section>
+<section style="padding: 0 16px">
+  <div class="list-group">
+    <a class="list-group-item" ng-repeat="project in vm.project.articles"
+       ui-sref="articles.edit({ projectId: vm.projectId, projectName: vm.projectName, articleId: vm.articleName(article.title) })" style="border-right: none;border-left: none;">
+      <div>
+        <span class="glyphicon glyphicon-file" style="font-size: 20px; padding: 6px 8px 0 0;float: left;"></span>
+        <h2 class="list-group-item-heading" style="color: #337ab7" ng-bind="article.title"></h2>
+      </div>
+      <p class="list-group-item-text" style="color: #868686">Posted on
+        <span ng-bind="article.created | date:'mediumDate'"></span> by
+        <span ng-bind="article.user.displayName"></span></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="!vm.project.articles.length & !vm.project.folders.length">
+    No article are currently in this project. <a ui-sref="articles.create({projectId: vm.projectId, projectName: vm.projectName })">create one</a>?
   </div>
 </section>

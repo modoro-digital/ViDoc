@@ -25,6 +25,27 @@
   <ul class="sidebar-menu">
 
     <li class="header">MANAGEMENT</li>
+    <li class="treeview">
+      <a ui-sref="projects.list">
+        <span class="glyphicon glyphicon-book"
+              style="font-size: 12px;padding-right: 8px"></span>
+        <span>Projects</span>
+      </a>
+    </li>
+    <li class="treeview">
+      <a ui-sref="admin.users">
+        <span class="glyphicon glyphicon-user"
+              style="font-size: 12px;padding-right: 8px"></span>
+        <span>Manage Users</span>
+      </a>
+    </li>
+    <li class="treeview">
+      <a ui-sref="chat">
+        <span class="glyphicon glyphicon-envelope"
+              style="font-size: 12px;padding-right: 8px"></span>
+        <span>Chat</span>
+      </a>
+    </li>
     <li ng-repeat="item in vm.menu.items | orderBy: 'position'" ng-if="item.shouldRender(vm.authentication.user);"  ui-sref-active="active" class="{{item.class}} treeview">
       <a href="#">
         <i ng-class="item.icon || 'fa-circle-o' " class="fa"></i>
@@ -39,13 +60,7 @@
         </li>
       </ul>
     </li>
-    <li class="treeview">
-      <a ui-sref="projects.list">
-        <span class="glyphicon glyphicon-book" 
-        style="font-size: 12px;padding-right: 8px"></span>
-        <span>Project</span>
-      </a>
-    </li>
+
   </ul>
 </section>
 <!-- /.sidebar -->
