@@ -45,8 +45,8 @@
       <span ng-bind="article.user.displayName"></span></p>
     </a>
   </div>
-  <div class="alert alert-warning text-center" ng-if="!vm.folder.articles.length && vm.folder.subfolders.length">
-    No article are currently in this folder. <a ui-sref="articles.create({projectId: vm.folder.project, folderId: vm.folder._id })">create articles</a>
+  <div class="alert alert-warning text-center" ng-if="!vm.folder.articles.length && !vm.folder.subfolders.length">
+    No article and subfolder are currently in this folder. <a ui-sref="articles.create({projectId: vm.folder.project, folderId: vm.folder._id })">create articles</a> or 
     <a ui-sref="folders.subfolder({projectId: vm.folder.project, folderId: vm.folder._id })">create folder</a>
   </div>
 </section>

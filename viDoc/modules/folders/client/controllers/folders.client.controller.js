@@ -13,6 +13,7 @@
 
     vm.authentication = Authentication;
     vm.folder = folder;
+    vm.folderId = $state.params.folderId;
     vm.projectId = $state.params.projectId;
     vm.error = null;
     vm.form = {};

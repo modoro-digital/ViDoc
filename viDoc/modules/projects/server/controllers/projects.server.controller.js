@@ -16,7 +16,7 @@ var path = require('path'),
  */
 exports.create = function(req, res) {
   var project = new Project(req.body);
-  project.user = req.user;
+  project.user = req.user._id;
 
   project.save(function(err) {
     if (err) {
@@ -39,13 +39,12 @@ exports.read = function(req, res) {
   // Add a custom field to the Article, for determining if the current User is the "owner".
   // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Article model.
   project.isCurrentUserOwner = req.user && project.user && project.user._id.toString() === req.user._id.toString();
-  Folder.find({ _id: project.folders }).populate('user', 'displayName').exec(function (err, folders) {
+  Folder.find({ _id: project.folders }, { name: 1, articles: 1, subfolders: 1 }).exec(function (err, folders) {
     if (err) {
       return res.status(404).send({
         message: 'No Folder with that identifier has been found'
       });
     }
-    project.folders = folders;
     Article.find({ _id: project.articles }, { 'created': 1, 'title': 1, 'user': 1 }).sort('-created')
       .populate('user', 'displayName').exec(function (err, articles) {
         if (err) {
@@ -53,8 +52,13 @@ exports.read = function(req, res) {
             message: 'No Folder with that identifier has been found'
           });
         }
-        project.articles = articles;
-        res.jsonp(project);
+        res.jsonp({
+          _id: project._id,
+          name: project.name,
+          description: project.description,
+          folders: folders,
+          articles: articles
+        });
       });
   });
 };

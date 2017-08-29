@@ -45,7 +45,7 @@
   </div>
   <div class="alert alert-warning text-center"
    ng-if="!vm.project.folders.length && !vm.project.articles.length">
-    No Folders yet, why don't you <a ui-sref="folders.create({ projectId: vm.project._id })">create one article</a> 
+    No article and folder are currently in this project. <a ui-sref="folders.create({ projectId: vm.project._id })">create one article</a> or 
     <a ui-sref="article.create({ projectId: vm.project._id })">create one folder</a>
   </div>
 </section>

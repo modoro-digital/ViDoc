@@ -16,8 +16,8 @@ var path = require('path'),
  */
 exports.create = function(req, res) {
   var folder = new Folder(req.body);
-  folder.user = req.user;
-  folder.project = req.project;
+  folder.user = req.user._id;
+  folder.project = req.project._id;
 
   folder.save(function(err) {
     if (err) {
@@ -44,7 +44,7 @@ exports.create = function(req, res) {
  */
 exports.createSub = function(req, res) {
   var subFolder = new Folder(req.body);
-  subFolder.user = req.user;
+  subFolder.user = req.user._id;
   subFolder.parentfolder = req.folder._id;
 
   subFolder.save(function(err) {
@@ -84,16 +84,22 @@ exports.read = function(req, res) {
           message: errorHandler.getErrorMessage(err)
         });
       } else {
-        folder.articles = articles;
-        Folder.find({ _id: folder.subfolders }).sort('-created')
-          .populate('user', 'displayName').exec(function(err, folders) {
+        Folder.find({ _id: folder.subfolders }, { name: 1, articles: 1, subfolders: 1 }).sort('-created')
+          .exec(function(err, subfolders) {
             if (err) {
               return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
               });
             }
-            folder.subfolders = folders;
-            res.jsonp(folder);
+            res.jsonp({
+              _id: folder._id,
+              name: folder.name,
+              description: folder.description,
+              parentfolder: folder.parentfolder,
+              project: folder.project,
+              articles: articles,
+              subfolders: subfolders
+            });
           });
       }
     });

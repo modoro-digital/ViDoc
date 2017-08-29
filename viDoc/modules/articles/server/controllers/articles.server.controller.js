@@ -15,8 +15,8 @@ var path = require('path'),
 exports.create = function (req, res) {
   var article = new Article(req.body);
   var folder = req.folder;
-  article.user = req.user;
-  article.folder = req.folder;
+  article.user = req.user._id;
+  article.folder = req.folder._id;
 
   article.save(err => {
     if (err) {

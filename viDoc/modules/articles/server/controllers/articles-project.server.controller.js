@@ -15,8 +15,8 @@ var path = require('path'),
 exports.create = function (req, res) {
   var article = new Article(req.body);
   var project = req.project;
-  article.user = req.user;
-  article.project = req.project;
+  article.user = req.user._id;
+  article.project = req.project._id;
 
   article.save(err => {
     if (err) {
