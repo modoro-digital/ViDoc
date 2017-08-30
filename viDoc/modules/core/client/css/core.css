@@ -58,11 +58,6 @@ a:hover .header-profile-image {
 .page-header{
   margin-left:20px;
 }
-.glyphicon glyphicon-book {
-  border-radius: 0;
-  height: 50px;
-  width: 66px;
-}
 .user-details {
   background: #f2f2f2;
   background-image: initial;

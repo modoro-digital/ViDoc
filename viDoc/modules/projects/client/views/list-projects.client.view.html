@@ -11,22 +11,6 @@
   <div class="page-header">
     <h1>Project Name</h1>
   </div>
-  <!--<div class="list-group">-->
-    <!--<a ng-repeat="project in vm.projects" ui-sref="projects.view({ projectId: project._id })"-->
-       <!--class="list-group-item" style="border-right: none; border-left: none">-->
-      <!--<div style="">-->
-        <!--<span class="glyphicon glyphicon-book" style="float: left; font-size: 20px;padding-top: 6px; padding-right: 16px"></span>-->
-        <!--<h2 class="list-group-item-heading" style="color: #009688" ng-bind="project.name"></h2>-->
-      <!--</div>-->
-      <!--<div style="color: #868686;margin-top: 8px">-->
-        <!--Posted on-->
-        <!--<span ng-bind="project.created | date:'mediumDate'"></span>-->
-        <!--by-->
-        <!--<span ng-if="project.user" ng-bind="project.user.displayName"></span>-->
-      <!--</div>-->
-    <!--</a>-->
-  <!--</div>-->
-
   <div class="row">
       <div class="list-group">
         <div class="col-sm-4"  ng-repeat="project in vm.items" ui-sref="projects.view({ projectId: project._id })"  class="list-group-item" style="border-right: none; border-left: none">
