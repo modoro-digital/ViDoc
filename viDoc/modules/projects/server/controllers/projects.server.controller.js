@@ -56,6 +56,7 @@ exports.read = function(req, res) {
           _id: project._id,
           name: project.name,
           description: project.description,
+          userID: project.userID,
           folders: folders,
           articles: articles
         });

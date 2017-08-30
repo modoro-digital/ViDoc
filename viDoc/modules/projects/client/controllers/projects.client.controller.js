@@ -6,18 +6,40 @@
     .module('projects')
     .controller('ProjectsController', ProjectsController);
 
-  ProjectsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'projectResolve'];
+  ProjectsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'projectResolve', 'AdminService'];
 
-  function ProjectsController ($scope, $state, $window, Authentication, project) {
+  function ProjectsController ($scope, $state, $window, Authentication, project, AdminService) {
     var vm = this;
 
     vm.authentication = Authentication;
     vm.project = project;
+    AdminService.query(function (data) {
+      var l = data.length;
+      vm.users = {
+        row1: (l % 3) > 1 ? data.splice(0, l / 3 + 1) : data.splice(0, l / 3 + l % 3),
+        row2: (l % 3) > 1 ? data.splice(0, l / 3 + 1) : data.splice(0, l / 3),
+        row3: data.splice(0, l / 3)
+      };
+    });
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
     vm.close = close;
+    vm.addUser = function(userId) {
+      var index = vm.project.userID.indexOf(userId);
+      if (index === -1) {
+        vm.project.userID.push(userId);
+      } else {
+        vm.project.userID.splice(index, 1);
+      }
+    };
+    vm.check = function(userId) {
+      if (vm.project.userID && vm.project.userID.indexOf(userId) >= 0) {
+        return true;
+      }
+      return false;
+    };
     // Remove existing Project
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {

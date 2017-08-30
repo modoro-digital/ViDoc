@@ -73,7 +73,7 @@
           });
         } else {
           $state.go('projects.view', {
-            projectId: $state.params.projectId,
+            projectId: $state.params.projectId
           });
         }
         // should we send the User to the list or the updated Article's view?

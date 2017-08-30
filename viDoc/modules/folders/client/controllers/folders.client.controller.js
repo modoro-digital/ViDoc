@@ -31,7 +31,7 @@
             });
           } else {
             $state.go('projects.view', {
-              projectId: $state.params.projectId,
+              projectId: $state.params.projectId
             });
           }
         });
@@ -64,7 +64,7 @@
           });
         } else {
           $state.go('projects.view', {
-            projectId: vm.projectId,
+            projectId: vm.projectId
           });
         }
       }

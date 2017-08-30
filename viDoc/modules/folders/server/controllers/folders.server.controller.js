@@ -77,7 +77,7 @@ exports.read = function(req, res) {
   // Add a custom field to the Folder, for determining if the current User is the "owner".
   // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Folder model.
   folder.isCurrentUserOwner = req.user && folder.user && folder.user._id.toString() === req.user._id.toString();
-  Article.find({ _id: folder.articles }, { 'created': 1, 'title': 1, 'user': 1}).sort('-created')
+  Article.find({ _id: folder.articles }, { 'created': 1, 'title': 1, 'user': 1 }).sort('-created')
     .populate('user', 'displayName').exec(function(err, articles) {
       if (err) {
         return res.status(400).send({
