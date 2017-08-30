@@ -11,12 +11,12 @@
   <div class="page-header">
     <h1>Project Name</h1>
   </div>
-  <div class="row">
+  <div class="row" style="margin: 0">
     <div class="list-group">
-      <div class="col-sm-4" ng-repeat="project in vm.items" ui-sref="projects.view({ projectId: project._id })" class="list-group-item" style="border-right: none; border-left: none">
+      <div class="col-sm-4" ng-repeat="project in vm.items" ui-sref="projects.view({ projectId: project._id })" class="list-group-item" style=" padding: 16px;">
+      <div class="pro">
         <div style="">
-          <span style="float: left; font-size: 20px;padding-top: 6px; padding-right: 16px"></span>
-          <h2 class="list-group-item-heading" style="color: #009688" ng-bind="project.name"></h2>
+          <h2 class="list-group-item-heading" style="color: #009688;padding-left: 16px" ng-bind="project.name"></h2>
         </div>
         <div class="user-details prj_details">
           <div class="fl usr_lt">
@@ -36,11 +36,12 @@
             </div>
           </div>
         </div>
-        <div style="color: #868686;margin-top: 8px">
+        <div style="color: #868686;margin-top: 8px;padding-left: 16px">
           Posted on
           <span ng-bind="project.created | date:'mediumDate'"></span> by
           <span ng-if="project.user" ng-bind="project.user.displayName"></span>
         </div>
+      </div>
       </div>
     </div>
   </div>
