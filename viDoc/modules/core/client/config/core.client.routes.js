@@ -29,10 +29,11 @@
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: '/modules/core/client/views/home.client.view.html',
-        controller: 'HomeController',
+        templateUrl: '/modules/projects/client/views/list-projects.client.view.html',
+        controller: 'ProjectsListController',
         controllerAs: 'vm',
         data: {
+          pageTitle: 'Projects List',
           roles: ['user', 'admin']
         }
       })
