@@ -42,18 +42,12 @@ a:hover .header-profile-image {
   cursor: pointer;
 }
 
-.col-sm-4 {
+.pro {
   border: 1px solid #ccc;
   min-height: 200px;
   box-shadow: 0px 0px 3px #999;
-  margin: 0 auto 25px;
-  margin-left:30px;
-  width: 30%;
-  word-wrap: break-word;      /* IE */
-  /*height: auto;*/
-  /*background: #fff;*/
-  /*margin: 40px 17px 0;*/
-  /*overflow: hidden;*/
+  cursor: pointer;
+  word-wrap: break-word;
 }
 .page-header{
   margin-left:20px;
@@ -82,8 +76,6 @@ a:hover .header-profile-image {
   border-top-style: solid;
   border-top-color: rgb(220, 218, 219);
   margin-top: 5px;
-  margin-left: -15px;
-  margin-right: -15px;
 }
 .prj_details .user-image {
   height: 68px;

@@ -25,40 +25,12 @@
   <ul class="sidebar-menu">
 
     <li class="header">MANAGEMENT</li>
-    <li class="treeview">
-      <a ui-sref="projects.list">
+    <li ng-repeat="subitem in vm.menu.items | orderBy: 'position'" ng ng-if="subitem.shouldRender(vm.authentication.user);"  ui-sref-active="active" class="treeview">
+      <a ui-sref="{{subitem.state}}({[subitem.params.name]: subitem.params.id })">
         <span class="glyphicon glyphicon-book"
               style="font-size: 12px;padding-right: 8px"></span>
-        <span>Projects</span>
+        <span ng-bind="subitem.title"></span>
       </a>
-    </li>
-    <li class="treeview">
-      <a ui-sref="admin.users">
-        <span class="glyphicon glyphicon-user"
-              style="font-size: 12px;padding-right: 8px"></span>
-        <span>Manage Users</span>
-      </a>
-    </li>
-    <li class="treeview">
-      <a ui-sref="chat">
-        <span class="glyphicon glyphicon-envelope"
-              style="font-size: 12px;padding-right: 8px"></span>
-        <span>Chat</span>
-      </a>
-    </li>
-    <li ng-repeat="item in vm.menu.items | orderBy: 'position'" ng-if="item.shouldRender(vm.authentication.user);"  ui-sref-active="active" class="{{item.class}} treeview">
-      <a href="#">
-        <i ng-class="item.icon || 'fa-circle-o' " class="fa"></i>
-        <span ng-bind="item.title"></span>
-        <span class="pull-right-container" ng-if="item.items.length>0">
-          <i class="fa fa-angle-left pull-right"></i>
-        </span>
-      </a>
-      <ul class="treeview-menu" ng-if="item.items.length>0">
-        <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(vm.authentication.user);">
-          <a ui-sref="{{subitem.state}}({{subitem.params}})" ><i class="fa fa-circle-o"></i> <span ng-bind="subitem.title"></span></a>
-        </li>
-      </ul>
     </li>
 
   </ul>
