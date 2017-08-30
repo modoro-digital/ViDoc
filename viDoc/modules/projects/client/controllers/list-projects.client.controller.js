@@ -5,14 +5,11 @@
     .module('projects')
     .controller('ProjectsListController', ProjectsListController);
 
-  ProjectsListController.$inject = ['ProjectsService'];
+  ProjectsListController.$inject = ['$scope', 'ProjectsService', 'menuService', '$state'];
 
-  function ProjectsListController(ProjectsService) {
+  function ProjectsListController($scope, ProjectsService, menuService, $state) {
     var vm = this;
 
     vm.projects = ProjectsService.query();
-    vm.projectName = function (name) {
-      return name.replace(/ /gi, '-').toLowerCase();
-    };
   }
 }());
