@@ -5,11 +5,10 @@
     .module('projects')
     .controller('ProjectsListController', ProjectsListController);
 
-  ProjectsListController.$inject = ['ProjectsService'];
+  ProjectsListController.$inject = ['ProjectsService', 'PagerService'];
 
-  function ProjectsListController(ProjectsService) {
+  function ProjectsListController(ProjectsService,PagerService) {
     var vm = this;
-
     vm.pager = {};
     vm.setPage = setPage;
     ProjectsService.query(function (data) {
