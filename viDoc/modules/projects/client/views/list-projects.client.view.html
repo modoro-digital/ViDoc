@@ -11,19 +11,57 @@
   <div class="page-header">
     <h1>Project Name</h1>
   </div>
-  <div class="list-group">
-    <a ng-repeat="project in vm.projects" ui-sref="projects.view({ projectId: project._id })"
-       class="list-group-item" style="border-right: none; border-left: none">
-      <div style="">
-        <span class="glyphicon glyphicon-book" style="float: left; font-size: 20px;padding-top: 6px; padding-right: 16px"></span>
-        <h2 class="list-group-item-heading" style="color: #009688" ng-bind="project.name"></h2>
+  <div class="row">
+    <div class="list-group">
+      <div class="col-sm-4" ng-repeat="project in vm.items" ui-sref="projects.view({ projectId: project._id })" class="list-group-item" style="border-right: none; border-left: none">
+        <div style="">
+          <span style="float: left; font-size: 20px;padding-top: 6px; padding-right: 16px"></span>
+          <h2 class="list-group-item-heading" style="color: #009688" ng-bind="project.name"></h2>
+        </div>
+        <div class="user-details prj_details">
+          <div class="fl usr_lt">
+            <div class="user-image">
+              <span class="glyphicon glyphicon-book" style="font-size: 50px"></span>
+            </div>
+            <div class=" usr_rt">
+              <div class="border_usr">
+                <b> <span class="list-group-item-text" ng-bind="project.userID.length "></span></b> Users
+              </div>
+              <div>
+                <b> <span class="list-group-item-text" ng-bind="project.folders.length+ subfolder.folders.length"></span></b> Folders
+              </div>
+              <div>
+                <b> <span class="list-group-item-text" ng-bind="project.articles.length + subfolder.articles.length"></span></b> Articles
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="color: #868686;margin-top: 8px">
+          Posted on
+          <span ng-bind="project.created | date:'mediumDate'"></span> by
+          <span ng-if="project.user" ng-bind="project.user.displayName"></span>
+        </div>
       </div>
-      <div style="color: #868686;margin-top: 8px">
-        Posted on
-        <span ng-bind="project.created | date:'mediumDate'"></span>
-        by
-        <span ng-if="project.user" ng-bind="project.user.displayName"></span>
-      </div>
-    </a>
+    </div>
   </div>
 </section>
+<!-- pager -->
+<div class="text-center">
+  <ul ng-if="vm.pager.pages.length" class="pagination">
+    <li ng-class="{disabled:vm.pager.currentPage === 1}">
+      <a ng-click="vm.setPage(1)">First</a>
+    </li>
+    <li ng-class="{disabled:vm.pager.currentPage === 1}">
+      <a ng-click="vm.setPage(vm.pager.currentPage - 1)">Previous</a>
+    </li>
+    <li ng-repeat="page in vm.pager.pages" ng-class="{active:vm.pager.currentPage === page}">
+      <a ng-click="vm.setPage(page)">{{page}}</a>
+    </li>
+    <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
+      <a ng-click="vm.setPage(vm.pager.currentPage + 1)">Next</a>
+    </li>
+    <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
+      <a ng-click="vm.setPage(vm.pager.totalPages)">Last</a>
+    </li>
+  </ul>
+</div>
