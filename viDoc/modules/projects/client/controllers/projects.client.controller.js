@@ -26,6 +26,9 @@
     vm.remove = remove;
     vm.save = save;
     vm.close = close;
+    if (!vm.project.userID) {
+      vm.project.userID = [];
+    }
     vm.addUser = function(userId) {
       var index = vm.project.userID.indexOf(userId);
       if (index === -1) {
