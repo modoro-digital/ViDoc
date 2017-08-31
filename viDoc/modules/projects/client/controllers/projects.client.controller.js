@@ -47,12 +47,18 @@
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {
         vm.project.$remove(function() {
-          $state.go('projects.list');
+          $state.go('home');
         });
       }
     }
     function close() {
-      $state.go('projects.list');
+      if (vm.project._id) {
+        $state.go('projects.view', {
+          projectId: vm.project._id
+        });
+      } else {
+        $state.go('home');
+      }
     }
     // Save Project
     function save(isValid) {
@@ -69,7 +75,7 @@
       }
 
       function successCallback(res) {
-        $state.go('projects.list');
+        $state.go('home');
       }
 
       function errorCallback(res) {
