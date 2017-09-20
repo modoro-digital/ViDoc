@@ -44,7 +44,8 @@ module.exports = {
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
         'public/lib/angular-ui-scroll/dist/ui-scroll.min.js',
-        'public/lib/angular-ui-scroll/dist/ui-scroll-grid.min.js'
+        'public/lib/angular-ui-scroll/dist/ui-scroll-grid.min.js',
+        'public/lib/ng-letter-avatar/dist/ngletteravatar.min.js'
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']

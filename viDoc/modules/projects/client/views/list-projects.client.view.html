@@ -23,9 +23,9 @@
             <div class="user-image">
               <span class="glyphicon glyphicon-book" style="font-size: 50px"></span>
             </div>
-            <div class=" usr_rt">
+            <div class="usr_rt">
               <div class="border_usr">
-                <b> <span class="list-group-item-text" ng-bind="project.userID.length "></span></b> Users
+                <b> <span class="list-group-item-text" ng-bind="(project.userID.length) + ' User' + (project.userID.length >1 ? 's' : '')"></span></b>
               </div>
               <div>
                 <b> <span class="list-group-item-text" ng-bind="project.folders.length+ subfolder.folders.length"></span></b> Folders
@@ -36,10 +36,21 @@
             </div>
           </div>
         </div>
-        <div style="color: #868686;margin-top: 8px;padding-left: 16px">
-          Posted on
-          <span ng-bind="project.created | date:'mediumDate'"></span> by
-          <span ng-if="project.user" ng-bind="project.user.displayName"></span>
+        <div class="wrap-owner-detail">
+          <span class="" ng-bind="'Posted on ' + (project.created | date:'mediumDate') + ' by'"></span>
+          <div class="owner">
+            <small class="letter-avatar" ng-hide="{{ (project.user.profileImageURL === '') ? false : true }}">
+               <ng-letter-avatar
+                data="{{project.user.displayName}}"
+                ng-hide="{{ (project.user.profileImageURL === '') ? false : true }}"></ng-letter-avatar>
+            </small>
+            <img 
+              ng-src="/{{project.user.profileImageURL}}" 
+              alt="{{project.user.displayName}}" 
+              class="user-image-project"
+              ng-hide="{{ (project.user.profileImageURL === '') ? true : false }}" >
+            <span ng-if="project.user" ng-bind="project.user.displayName"></span>
+          </div>
         </div>
       </div>
       </div>

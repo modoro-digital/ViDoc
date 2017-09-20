@@ -26,7 +26,6 @@
       }
       vm.pager = PagerService.GetPager(vm.dummyItems.length, page);
       vm.items = vm.projects.slice(vm.pager.startIndex, vm.pager.endIndex + 1);
-
     }
   }
 })();

@@ -28,7 +28,8 @@ module.exports = {
         'public/lib/jquery-ui/jquery-ui.min.js',
         'public/lib/ckeditor/ckeditor.js',
         'public/lib/angular-ui-scroll/dist/ui-scroll.min.js',
-        'public/lib/angular-ui-scroll/dist/ui-scroll-grid.min.js'
+        'public/lib/angular-ui-scroll/dist/ui-scroll-grid.min.js',
+        'public/lib/ng-letter-avatar/dist/ngletteravatar.min.js'
         // endbower
       ]
     },
