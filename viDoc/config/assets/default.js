@@ -19,6 +19,8 @@ module.exports = {
         // 'public/lib/AdminLTE/plugins/daterangepicker/daterangepicker.css',
         // 'public/lib/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
         // endbower
+        // npm:css
+
       ],
       js: [
         // bower:js
@@ -41,6 +43,8 @@ module.exports = {
         'public/lib/angular-ui-notification/dist/angular-ui-notification.js',
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
+        'public/lib/angular-ui-scroll/dist/ui-scroll.min.js',
+        'public/lib/angular-ui-scroll/dist/ui-scroll-grid.min.js'
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']

@@ -16,6 +16,8 @@
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
         <!-- Messages: style can be found in dropdown.less-->
+        <!-- <li>{{test.user}}</li> -->
+        <li class="" ng-bind="vm.testUser"></li>
         <li class="dropdown messages-menu" uib-dropdown>
           <a href="#" id="messages-menu" uib-dropdown-toggle class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-envelope-o"></i>
@@ -93,16 +95,30 @@
           </ul>
         </li>
         <!-- Notifications: style can be found in dropdown.less -->
-        <li class="dropdown notifications-menu" uib-dropdown>
-          <a id="notifications-menu" href="#" uib-dropdown-toggle class="dropdown-toggle" data-toggle="dropdown">
+        <li class="dropdown notifications-menu" uib-dropdown ng-click="vm.check_notification()">
+          <a id="notifications-menu" href="#" uib-dropdown-toggle class="dropdown-toggle" data-toggle="dropdown" >
             <i class="fa fa-bell-o"></i>
-            <span class="label label-warning">10</span>
+            <span ng-hide="vm.has_message" class="label label-warning">{{vm.notificationsReadFalse}}</span>
           </a>
           <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="notifications-menu">
-            <li class="header">You have 10 notifications</li>
+            <li class="header">Notifications</li>
             <li>
+              <ul ng-hide="vm.isLoadNotification" ng-model="vm.isLoadNotification" class="menu" ui-scroll-viewport>
+                <li ui-scroll="item in vm.notificationsDataSource" buffer-size="3" padding="0.3" start-index="0">
+                  <a href="#">
+                    <i class="fa fa-users text-aqua"></i>
+                    {{item.message}}
+                  </a>
+                </li>
+              </ul>
               <!-- inner menu: contains the actual data -->
-              <ul class="menu">
+              <!-- <ul class="menu" ng-repeat="message in vm.notifications">
+                <li>
+                  <a href="#">
+                    <i class="fa fa-users text-aqua"></i>
+                    {{message.message}}
+                  </a>
+                </li>
                 <li>
                   <a href="#">
                     <i class="fa fa-users text-aqua"></i> 5 new members joined today
@@ -129,7 +145,7 @@
                     <i class="fa fa-user text-red"></i> You changed your username
                   </a>
                 </li>
-              </ul>
+              </ul> -->
             </li>
             <li class="footer"><a href="#">View all</a></li>
           </ul>

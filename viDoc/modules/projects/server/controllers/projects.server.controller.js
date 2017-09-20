@@ -6,9 +6,11 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Project = mongoose.model('Project'),
+  Notification = mongoose.model('Notification'),
   Article = mongoose.model('Article'),
   Folder = mongoose.model('Folder'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+  addNotificationFunction = require(path.resolve('./modules/notifications/server/controllers/notifications.server.controller')),
   _ = require('lodash');
 
 /**
@@ -25,8 +27,18 @@ exports.create = function(req, res) {
       });
     } else {
       res.jsonp(project);
+
+      var users = [],
+          message = "You were added on " + project.name + " project",
+          user = project.user._id;
+
+      project.userID.map( (elem) => {
+        users.push({user: elem})
+      });
+      addNotificationFunction.addNotification(users, message, user);
     }
   });
+
 };
 
 /**
