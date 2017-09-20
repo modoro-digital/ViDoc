@@ -8,6 +8,7 @@ module.exports = {
       css: [
         // bower:css
         'public/lib/AdminLTE/bootstrap/css/bootstrap.min.css',
+        'public/lib/angular-material/angular-material.min.css',
         'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
         'public/lib/AdminLTE/dist/css/AdminLTE.min.css',
         'public/lib/AdminLTE/dist/css/skins/skin-green.css',
@@ -18,6 +19,8 @@ module.exports = {
         // 'public/lib/AdminLTE/plugins/daterangepicker/daterangepicker.css',
         // 'public/lib/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
         // endbower
+        // npm:css
+
       ],
       js: [
         // bower:js
@@ -29,15 +32,19 @@ module.exports = {
         'public/lib/AdminLTE/dist/js/app.min.js',
         'public/lib/angular/angular.js',
         'public/lib/ckeditor/ckeditor.js',
-        'public/lib/angular-animate/angular-animate.js',
-        'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-        'public/lib/ng-file-upload/ng-file-upload.js',
+        'public/lib/angular-animate/angular-animate.min.js',
+        'public/lib/angular-aria/angular-aria.min.js',
         'public/lib/angular-messages/angular-messages.js',
+        'public/lib/angular-material/angular-material.min.js',
+        'public/lib/AdminLTE/bootstrap/js/bootstrap.min.js',
+        'public/lib/ng-file-upload/ng-file-upload.js',
         'public/lib/angular-mocks/angular-mocks.js',
         'public/lib/angular-resource/angular-resource.js',
         'public/lib/angular-ui-notification/dist/angular-ui-notification.js',
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
+        'public/lib/angular-ui-scroll/dist/ui-scroll.min.js',
+        'public/lib/angular-ui-scroll/dist/ui-scroll-grid.min.js'
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']

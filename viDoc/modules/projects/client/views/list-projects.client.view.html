@@ -1,0 +1,68 @@
+<section>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a ui-sref="projects.create"><span  class="glyphicon glyphicon-plus" style="font-size: 12px"></span> New Project</a></li>
+      </ul>
+    </div>
+  </nav>
+</section>
+<section>
+  <div class="page-header">
+    <h1>Project Name</h1>
+  </div>
+  <div class="row" style="margin: 0">
+    <div class="list-group">
+      <div class="col-sm-4" ng-repeat="project in vm.items" ui-sref="projects.view({ projectId: project._id })" class="list-group-item" style=" padding: 16px;">
+      <div class="pro">
+        <div style="">
+          <h2 class="list-group-item-heading" style="color: #009688;padding-left: 16px" ng-bind="project.name"></h2>
+        </div>
+        <div class="user-details prj_details">
+          <div class="fl usr_lt">
+            <div class="user-image">
+              <span class="glyphicon glyphicon-book" style="font-size: 50px"></span>
+            </div>
+            <div class=" usr_rt">
+              <div class="border_usr">
+                <b> <span class="list-group-item-text" ng-bind="project.userID.length "></span></b> Users
+              </div>
+              <div>
+                <b> <span class="list-group-item-text" ng-bind="project.folders.length+ subfolder.folders.length"></span></b> Folders
+              </div>
+              <div>
+                <b> <span class="list-group-item-text" ng-bind="project.articles.length + subfolder.articles.length"></span></b> Articles
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="color: #868686;margin-top: 8px;padding-left: 16px">
+          Posted on
+          <span ng-bind="project.created | date:'mediumDate'"></span> by
+          <span ng-if="project.user" ng-bind="project.user.displayName"></span>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- pager -->
+<div class="text-center">
+  <ul ng-if="vm.pager.pages.length" class="pagination">
+    <li ng-class="{disabled:vm.pager.currentPage === 1}">
+      <a ng-click="vm.setPage(1)">First</a>
+    </li>
+    <li ng-class="{disabled:vm.pager.currentPage === 1}">
+      <a ng-click="vm.setPage(vm.pager.currentPage - 1)">Previous</a>
+    </li>
+    <li ng-repeat="page in vm.pager.pages" ng-class="{active:vm.pager.currentPage === page}">
+      <a ng-click="vm.setPage(page)">{{page}}</a>
+    </li>
+    <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
+      <a ng-click="vm.setPage(vm.pager.currentPage + 1)">Next</a>
+    </li>
+    <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
+      <a ng-click="vm.setPage(vm.pager.totalPages)">Last</a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,51 @@
+<section>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a href="/"><span class="glyphicon glyphicon-arrow-left" style="font-size: 12px; padding-right: 8px"></span> Back</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a ui-sref="folders.create({ projectId: vm.project._id })"><span class="glyphicon glyphicon-plus" style="font-size: 12px"></span> New Folder</a></li>
+        <li><a ui-sref="article.create({ projectId: vm.project._id})"><span class="glyphicon glyphicon-plus" style="font-size: 12px"></span> New Article</a></li>
+        <li><a ui-sref="projects.edit({ projectId: vm.project._id })"><span class="glyphicon glyphicon-pencil" style="font-size: 12px"></span> Edit</a></li>
+        <li><a href="#" ng-click="vm.remove()"><span class="glyphicon glyphicon-trash" style="font-size: 12px"></span> Delete</a></li>
+      </ul>
+    </div>
+  </nav>
+</section>
+<section style="padding: 0 16px">
+  <div class="page-header">
+    <h1 style="color: #555" ng-bind="vm.project.name"></h1>
+    <h4 style="color: #868686" ng-bind="vm.project.description"></h4>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="folder in vm.project.folders"
+       ui-sref="folders.view({ projectId: vm.project._id, folderId: folder._id })"
+       class="list-group-item" style="border-right: none; border-left: none">
+      <div style="">
+        <span class="glyphicon glyphicon-folder-close" style="float: left; font-size: 20px;padding-top: 6px; padding-right: 16px"></span>
+        <h2 class="list-group-item-heading" style="color: #f0ad4e" ng-bind="folder.name"></h2>
+      </div>
+      <div style="color: #868686;margin-top: 8px">
+        <span class="glyphicon glyphicon-triangle-right" style="font-size: 8px; padding: 4px 8px 0 0;float: left;"></span>
+        <span class="glyphicon glyphicon-file" style="font-size: 12px; padding: 2px 8px 0 0;float: left;"></span>
+        <p class="list-group-item-text" ng-bind="folder.articles.length + ' Articles'"></p>
+      </div>
+    </a>
+    <a class="list-group-item" ng-repeat="article in vm.project.articles" 
+    ui-sref="article.edit({ projectId: vm.project._id, articleId: article._id })" style="border-right: none;border-left: none;">
+      <div>
+        <span class="glyphicon glyphicon-file" style="font-size: 20px; padding: 6px 8px 0 0;float: left;"></span>
+        <h2 class="list-group-item-heading" style="color: #337ab7" ng-bind="article.title"></h2>
+      </div>
+      <p class="list-group-item-text" style="color: #868686">Posted on 
+      <span ng-bind="article.created | date:'mediumDate'"></span> by 
+      <span ng-bind="article.user.displayName"></span></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center"
+   ng-if="!vm.project.folders.length && !vm.project.articles.length">
+    No article and folder are currently in this project. <a ui-sref="folders.create({ projectId: vm.project._id })">create one article</a> or 
+    <a ui-sref="article.create({ projectId: vm.project._id })">create one folder</a>
+  </div>
+</section>

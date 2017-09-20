@@ -2,14 +2,13 @@
   'use strict';
 
   angular
-    .module('articles.admin')
+    .module('articles')
     .controller('CreateArticlesAdminController', CreateArticlesAdminController);
 
-  CreateArticlesAdminController.$inject = ['$scope', '$state', '$window', 'articleResolve', 'Authentication', 'Notification'];
+  CreateArticlesAdminController.$inject = ['$scope', '$state', '$window', 'articleResolve', 'Authentication', 'Notification', '$stateParams'];
 
-  function CreateArticlesAdminController($scope, $state, $window, article, Authentication, Notification) {
+  function CreateArticlesAdminController($scope, $state, $window, article, Authentication, Notification, $stateParams) {
     var vm = this;
-
     vm.article = article;
     vm.authentication = Authentication;
     vm.form = {};
@@ -21,27 +20,35 @@
       extraPlugins: 'colorbutton,colordialog,image2',
       filebrowserUploadUrl: '/api/users/upload',
       toolbarGroups: [
-        { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
-        { name: 'clipboard', groups: [ 'undo', 'clipboard' ] },
-        { name: 'styles', groups: [ 'styles' ] },
-        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-        { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
-        { name: 'links', groups: [ 'links' ] },
-        { name: 'insert', groups: [ 'insert' ] },
-        { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
-        { name: 'forms', groups: [ 'forms' ] },
-        { name: 'tools', groups: [ 'tools' ] },
-        { name: 'others', groups: [ 'others' ] },
-        { name: 'colors', groups: [ 'colors' ] }
+        { name: 'document', groups: ['mode', 'document', 'doctools'] },
+        { name: 'clipboard', groups: ['undo', 'clipboard'] },
+        { name: 'styles', groups: ['styles'] },
+        { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+        { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
+        { name: 'links', groups: ['links'] },
+        { name: 'insert', groups: ['insert'] },
+        { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
+        { name: 'forms', groups: ['forms'] },
+        { name: 'tools', groups: ['tools'] },
+        { name: 'others', groups: ['others'] },
+        { name: 'colors', groups: ['colors'] }
       ],
       removeButtons: 'Underline,Subscript,Superscript,Cut,Copy,Paste,PasteText,PasteFromWord,About,Outdent,Indent,Source'
     };
     vm.content = $window.CKEDITOR.replace('editor1', vm.options);
-    
     // Remove existing Article
     function close() {
       vm.content.destroy();
-      $state.go('admin.articles.list');
+      if ($state.params.folderId) {
+        $state.go('folders.view', {
+          projectId: $state.params.projectId,
+          folderId: $state.params.folderId
+        });
+      } else {
+        $state.go('projects.view', {
+          projectId: $state.params.projectId
+        });
+      }
     }
 
     // Save Article
@@ -52,13 +59,24 @@
       }
 
       vm.article.content = vm.content.getData();
-      // Create a new article, or update the current instance
+      vm.article.project = $state.params.projectId;
+      vm.article.folder = $state.params.folderId;
       vm.article.createOrUpdate()
         .then(successCallback)
         .catch(errorCallback);
 
       function successCallback(res) {
-        $state.go('admin.articles.list'); // should we send the User to the list or the updated Article's view?
+        if ($state.params.folderId) {
+          $state.go('folders.view', {
+            projectId: $state.params.projectId,
+            folderId: $state.params.folderId
+          });
+        } else {
+          $state.go('projects.view', {
+            projectId: $state.params.projectId
+          });
+        }
+        // should we send the User to the list or the updated Article's view?
         Notification.success({ message: '<i class="glyphicon glyphicon-ok"></i> Article saved successfully!' });
       }
 

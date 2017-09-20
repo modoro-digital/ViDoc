@@ -8,7 +8,9 @@
   ArticlesService.$inject = ['$resource', '$log'];
 
   function ArticlesService($resource, $log) {
-    var Article = $resource('/api/articles/:articleId', {
+    var Article = $resource('/api/projects/:projectId/folders/:folderId/articles/:articleId', {
+      projectId: '@project',
+      folderId: '@folder',
       articleId: '@_id'
     }, {
       update: {

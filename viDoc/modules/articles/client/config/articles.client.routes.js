@@ -5,43 +5,103 @@
     .module('articles.routes')
     .config(routeConfig);
 
-  routeConfig.$inject = ['$stateProvider'];
+  routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-  function routeConfig($stateProvider) {
+  function routeConfig($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('articles', {
         abstract: true,
-        url: '/articles',
+        url: '/projects/:projectId/folders/:folderId/articles',
         template: '<ui-view/>'
       })
-      .state('articles.list', {
-        url: '',
-        templateUrl: '/modules/articles/client/views/list-articles.client.view.html',
-        controller: 'ArticlesListController',
+      .state('articles.create', {
+        url: '/create',
+        templateUrl: '/modules/articles/client/views/admin/create-articles.client.view.html',
+        controller: 'CreateArticlesAdminController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Articles List'
+          roles: ['user', 'admin'],
+          pageTitle: 'New Articles'
+        },
+        resolve: {
+          articleResolve: newArticleFolder
         }
       })
-      .state('articles.view', {
+      .state('articles.edit', {
         url: '/:articleId',
-        templateUrl: '/modules/articles/client/views/view-article.client.view.html',
-        controller: 'ArticlesController',
+        templateUrl: '/modules/articles/client/views/admin/edit-articles.client.view.html',
+        controller: 'EditArticlesAdminController',
         controllerAs: 'vm',
-        resolve: {
-          articleResolve: getArticle
-        },
         data: {
-          pageTitle: 'Article {{ articleResolve.title }}'
+          roles: ['user', 'admin'],
+          pageTitle: '{{articleResolve.title}}'
+        },
+        resolve: {
+          articleResolve: getArticleFolder
+        }
+      })
+      .state('article', {
+        abstract: true,
+        url: '/projects/:projectId/articles',
+        template: '<ui-view/>'
+      })
+      .state('article.create', {
+        url: '/create',
+        templateUrl: '/modules/articles/client/views/admin/create-articles.client.view.html',
+        controller: 'CreateArticlesAdminController',
+        controllerAs: 'vm',
+        data: {
+          roles: ['user', 'admin'],
+          pageTitle: 'New Articles'
+        },
+        resolve: {
+          articleResolve: newArticleProject
+        }
+      })
+      .state('article.edit', {
+        url: '/:articleId',
+        templateUrl: '/modules/articles/client/views/admin/edit-articles.client.view.html',
+        controller: 'EditArticlesAdminController',
+        controllerAs: 'vm',
+        data: {
+          roles: ['user', 'admin'],
+          pageTitle: '{{articleResolve.title}}'
+        },
+        resolve: {
+          articleResolve: getArticleProject
         }
       });
   }
 
-  getArticle.$inject = ['$stateParams', 'ArticlesService'];
+  getArticleFolder.$inject = ['$stateParams', 'ArticlesService'];
 
-  function getArticle($stateParams, ArticlesService) {
+  function getArticleFolder($stateParams, ArticlesService) {
     return ArticlesService.get({
+      projectId: $stateParams.projectId,
+      folderId: $stateParams.folderId,
       articleId: $stateParams.articleId
     }).$promise;
+  }
+
+  newArticleFolder.$inject = ['ArticlesService'];
+
+  function newArticleFolder(ArticlesService) {
+    return new ArticlesService();
+  }
+
+  getArticleProject.$inject = ['$stateParams', 'ArticlesServiceProject'];
+
+  function getArticleProject($stateParams, ArticlesServiceProject) {
+    return ArticlesServiceProject.get({
+      projectId: $stateParams.projectId,
+      articleId: $stateParams.articleId
+    }).$promise;
+  }
+
+  newArticleProject.$inject = ['ArticlesServiceProject'];
+
+  function newArticleProject(ArticlesServiceProject) {
+    return new ArticlesServiceProject();
   }
 }());
