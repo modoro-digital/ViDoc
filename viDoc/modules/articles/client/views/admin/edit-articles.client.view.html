@@ -32,3 +32,93 @@
       </div>
     </div>
 </section>
+<section style="padding: 0 16px">
+  <md-subheader class="md-no-sticky" style="background-color: #f8f8f8; margin-bottom: 16px;margin-left: -16px">Comment</md-subheader>
+  <div class="media" ng-repeat="comment in vm.comments">
+    <div class="media-left">
+      <img ng-src="/{{comment.user.profileImageURL}}" class="media-object" style="width:40px;border-radius: 50%">
+    </div>
+    <div class="media-body">
+      <div class="dropdown edit-comment">
+        <i class="dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" style="color: #676d77"></i>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li ng-click="vm.editComment(comment)"><a href="#"><i class="fa fa-pencil"></i> Edit</a></li>
+          <li ng-click="vm.deleteComment(comment)"><a href="#"><i class="fa fa-trash-o"></i> Remove</a></li>
+        </ul>
+      </div>
+      <h4 ng-bind="comment.user.displayName" style="color: #365899;margin: 0"></h4>
+      <p ng-bind-html="vm.changText(comment.content)" style="color: #1d2129;margin: 0"></p>
+      <div>
+        <span style="color: #365899;cursor: pointer;" ng-click="vm.subcommentList(comment)">Reply </span>
+        <sapn ng-bind="comment.isChange ? ' &#183; ' + vm.setTime(comment.created) + ' &#183; đã chỉnh sửa ' : ' &#183; ' + vm.time(comment.created)"></span>
+      </div>
+      <a href="#" ng-if="comment.subcomment > 0 && !comment.subcommentList" ng-click="vm.subcommentList(comment)" 
+      ng-bind="comment.subcomment + ' câu trả lời'"></a>
+    </div>
+    <section style="margin: 8px 0 0 46px;">
+      <div class="media" ng-repeat="subcomment in comment.subcommentList">
+        <div class="media-left">
+          <img ng-src="/{{subcomment.user.profileImageURL}}" class="media-object" style="width:40px;border-radius: 50%">
+        </div>
+        <div class="media-body">
+          <div class="dropdown edit-subcomment">
+            <i class="dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" style="color: #676d77"></i>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li ng-click="vm.editSubcomment(comment, subcomment)"><a href="#"><i class="fa fa-pencil"></i> Edit</a></li>
+              <li ng-click="vm.deleteComment(subcomment)"><a href="#"><i class="fa fa-trash-o"></i> Remove</a></li>
+            </ul>
+          </div>
+          <h4 ng-bind="subcomment.user.displayName" style="color: #365899;margin: 0"></h4>
+          <p ng-bind-html="vm.changText(subcomment.content)" style="color: #1d2129;margin: 0"></p>
+          <div>
+            <span style="color: #365899;cursor: pointer;" ng-click="vm.formSubcomment(subcomment)">Reply </span>
+            <sapn ng-bind="subcomment.isChange ? ' &#183; ' + vm.setTime(subcomment.created) + ' &#183; đã chỉnh sửa ' : ' &#183; ' + vm.time(subcomment.created)"></span>
+          </div>
+        </div>
+      </div>
+      <div class="media" id="{{comment._id}}" style="display: none;">
+        <div class="media-left">
+          <img ng-src="/{{vm.authentication.user.profileImageURL}}" class="media-object"
+            style="width:40px;border-radius: 50%">
+        </div>
+        <div class="media-body" style="padding-top: 3px">
+          <form name="vm.form.subcommentForm" class="form-horizontal">
+            <textarea class="form-control" ng-focus="vm.focus(122, $event)" ng-keydown="vm.keydownComment($event, comment)" rows="1" id="{{'form'+comment._id}}" style="border-radius: 16px" placeholder="Comments"></textarea>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="media" style="padding-bottom: 50px">
+    <div class="media-left">
+      <img ng-src="/{{vm.authentication.user.profileImageURL}}" class="media-object"
+        style="width:40px;border-radius: 50%">
+    </div>
+    <div class="media-body" style="padding-top: 3px">
+      <form name="vm.form.commentForm" class="form-horizontal">
+        <textarea class="form-control" ng-focus="vm.focus(76, $event)" ng-keydown="vm.keydownComment($event)" rows="1" id="comment" style="border-radius: 16px;font-size: 14px;line-height: 1.42857143" placeholder="Comments"></textarea>
+      </form>
+    </div>
+    <div ng-style="{'padding-right': vm.padding + 'px' }">
+      <p id="a" style="font-size: 14px;line-height: 1.42857143;font-family: Roboto,Helvetica Neue,sans-serif;"></p>
+      <span id="b" style="margin-left: -6px;">.</span>
+    </div>
+  </div>
+  <div id="tag" ng-show="(vm.users | filter: vm.searchUsers).length !== 0"  class="list-group" style="width: 200px;position: absolute;z-index: 900;display: none;margin: 0">
+    <a href="#" class="list-group-item disabled" style="padding: 4px">Users</a>
+    <div style="overflow: auto;height: 116px">
+      <a href="#" class="list-group-item" ng-repeat="user in vm.users | filter: vm.searchUsers" style="padding: 8px"
+      ng-click="vm.addUserComment(user.displayName)">
+        <div class="media">
+          <div class="media-left">
+            <img ng-src="/{{user.profileImageURL}}" class="media-object"
+              style="width:40px;border-radius: 50%">
+          </div>
+          <div class="media-body">
+            <h4 ng-bind="user.displayName" style="color: #365899;margin: 0"></h4>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

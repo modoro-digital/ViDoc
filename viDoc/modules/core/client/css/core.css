@@ -32,6 +32,15 @@ a:hover .header-profile-image {
 .error-text {
   display: none;
 }
+.edit-comment, .edit-subcomment {
+  display: none;
+  position: absolute;
+  right: 16px;
+  cursor: pointer;
+}
+.media:hover .edit-comment,.media .media-body:hover .edit-subcomment {
+  display: block;
+}
 .has-error .help-block.error-text {
   display: block;
 }

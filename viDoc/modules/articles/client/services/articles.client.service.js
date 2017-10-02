@@ -9,7 +9,7 @@
 
   function ArticlesService($resource, $log) {
     var Article = $resource('/api/projects/:projectId/folders/:folderId/articles/:articleId', {
-      projectId: '@project',
+      projectId: '@project._id',
       folderId: '@folder',
       articleId: '@_id'
     }, {

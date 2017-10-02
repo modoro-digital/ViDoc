@@ -30,7 +30,7 @@ var ProjectSchema = new Schema({
     type: Array,
     default: []
   },
-  userID: {
+  users: {
     type: Array,
     default: []
   },
@@ -39,6 +39,10 @@ var ProjectSchema = new Schema({
     default: ''
   },
   created: {
+    type: Date,
+    default: Date.now
+  },
+  update: {
     type: Date,
     default: Date.now
   },

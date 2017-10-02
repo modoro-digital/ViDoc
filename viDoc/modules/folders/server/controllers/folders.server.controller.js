@@ -25,7 +25,8 @@ exports.create = function(req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      var project = req.project;
+      let project = req.project;
+      project.update = Date.now();
       project.folders.push(folder._id);
       project.save(err => {
         if (err) {
@@ -33,7 +34,15 @@ exports.create = function(req, res) {
             message: errorHandler.getErrorMessage(err)
           });
         }
-        res.jsonp(folder);
+        res.jsonp({
+          _id: folder._id,
+          name: folder.name,
+          parentfolder: folder.parentfolder,
+          project: {
+            _id: project._id,
+            name: project.name
+          }
+        });
       });
     }
   });
@@ -61,7 +70,24 @@ exports.createSub = function(req, res) {
             message: errorHandler.getErrorMessage(err)
           });
         }
-        res.jsonp(subFolder);
+        let project = req.project;
+        project.update = Date.now();
+        project.save((err) => {
+          if (err) {
+            return res.status(400).send({
+              message: errorHandler.getErrorMessage(err)
+            });
+          }
+          res.jsonp({
+            _id: subFolder._id,
+            name: subFolder.name,
+            parentfolder: subFolder.parentfolder,
+            project: {
+              _id: project._id,
+              name: project.name
+            }
+          });
+        });
       });
     }
   });
@@ -109,7 +135,8 @@ exports.read = function(req, res) {
  * Update a Folder
  */
 exports.update = function(req, res) {
-  var folder = req.folder;
+  let folder = req.folder;
+  let project = req.project;
 
   folder = _.extend(folder, req.body);
 
@@ -119,7 +146,23 @@ exports.update = function(req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(folder);
+      project.update = Date.now();
+      project.save(err => {
+        if (err) {
+          return res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+          });
+        }
+        res.jsonp({
+          _id: folder._id,
+          name: folder.name,
+          parentfolder: folder.parentfolder,
+          project: {
+            _id: project._id,
+            name: project.name
+          }
+        });
+      });
     }
   });
 };
@@ -146,10 +189,19 @@ exports.delete = function(req, res) {
               message: errorHandler.getErrorMessage(err)
             });
           }
-          res.jsonp(folder);
+          project.update = Date.now();
+          project.save(err => {
+            if (err) {
+              return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+              });
+            }
+            res.jsonp(folder);
+          });
         });
       } else {
         project.folders.splice(project.folders.indexOf(folder._id), 1);
+        project.update = Date.now();
         project.save(err => {
           if (err) {
             return res.status(400).send({
@@ -167,7 +219,7 @@ exports.delete = function(req, res) {
  * List of Folders
  */
 exports.list = function(req, res) {
-  Folder.find().sort('-created').populate('user', 'displayName').exec(function(err, folders) {
+  Folder.find().sort('-update').populate('user', 'displayName').exec(function(err, folders) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -184,7 +236,7 @@ exports.list = function(req, res) {
 exports.folderByID = function(req, res, next, id) {
   if (mongoose.Types.ObjectId.isValid(id)) {
     Folder.findById(id)
-    .populate('user', 'displayName').exec(function (err, folder) {
+    .populate([{ path: 'user', select: 'displayName' }, { path: 'project', select: 'name' }]).exec(function (err, folder) {
       if (err) {
         return next(err);
       } else if (!folder) {
