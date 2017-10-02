@@ -5,9 +5,9 @@
     .module('articles')
     .controller('CreateArticlesAdminController', CreateArticlesAdminController);
 
-  CreateArticlesAdminController.$inject = ['$scope', '$state', '$window', 'articleResolve', 'Authentication', 'Notification', '$stateParams'];
+  CreateArticlesAdminController.$inject = ['$scope', '$state', '$window', 'articleResolve', 'Authentication', 'Notification', '$stateParams', 'menuService'];
 
-  function CreateArticlesAdminController($scope, $state, $window, article, Authentication, Notification, $stateParams) {
+  function CreateArticlesAdminController($scope, $state, $window, article, Authentication, Notification, $stateParams, menuService) {
     var vm = this;
     vm.article = article;
     vm.authentication = Authentication;
@@ -59,13 +59,20 @@
       }
 
       vm.article.content = vm.content.getData();
-      vm.article.project = $state.params.projectId;
+      vm.article.project = { _id: $state.params.projectId };
       vm.article.folder = $state.params.folderId;
       vm.article.createOrUpdate()
         .then(successCallback)
         .catch(errorCallback);
 
       function successCallback(res) {
+        menuService.updateMenuItem('sidebar', {
+          title: res.project.name,
+          state: 'projects.view',
+          id: res.project._id,
+          params: { name: 'projectId', id: res.project._id },
+          roles: ['*']
+        });
         if ($state.params.folderId) {
           $state.go('folders.view', {
             projectId: $state.params.projectId,

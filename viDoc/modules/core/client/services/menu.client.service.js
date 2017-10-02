@@ -10,6 +10,7 @@
     var service = {
       addMenu: addMenu,
       addMenuItem: addMenuItem,
+      updateMenuItem: updateMenuItem,
       addSubMenuItem: addSubMenuItem,
       defaultRoles: ['user', 'admin'],
       getMenu: getMenu,
@@ -48,6 +49,7 @@
 
       // Push new menu item
       service.menus[menuId].items.push({
+        id: options.id,
         title: options.title || '',
         state: options.state || '',
         type: options.type || 'item',
@@ -71,6 +73,47 @@
       // Return the menu object
       return service.menus[menuId];
     }
+
+    // Add menu item object
+    function updateMenuItem(menuId, options) {
+      options = options || {};
+
+      // Validate that the menu exists
+      service.validateMenuExistence(menuId);
+
+      // remove items last
+      removeMenuItem(menuId, options.id);
+      if (service.menus[menuId].items.length === 5) {
+        service.menus[menuId].items.pop();
+      }
+
+      // Push new menu item
+      service.menus[menuId].items.unshift({
+        id: options.id,
+        title: options.title || '',
+        state: options.state || '',
+        type: options.type || 'item',
+        class: options.class,
+        params: options.params || {},
+        roles: ((options.roles === null || typeof options.roles === 'undefined') ? service.defaultRoles : options.roles),
+        position: options.position || 0,
+        items: [],
+        shouldRender: shouldRender
+      });
+
+      // Add submenu items
+      if (options.items) {
+        for (var i in options.items) {
+          if (options.items.hasOwnProperty(i)) {
+            service.addSubMenuItem(menuId, options.state, options.items[i]);
+          }
+        }
+      }
+
+      // Return the menu object
+      return service.menus[menuId];
+    }
+
 
     // Add submenu item object
     function addSubMenuItem(menuId, parentItemState, options) {
@@ -146,13 +189,13 @@
     }
 
     // Remove existing menu object by menu id
-    function removeMenuItem(menuId, menuItemState) {
+    function removeMenuItem(menuId, menuItemId) {
       // Validate that the menu exists
       service.validateMenuExistence(menuId);
 
       // Search for menu item to remove
       for (var itemIndex in service.menus[menuId].items) {
-        if (service.menus[menuId].items.hasOwnProperty(itemIndex) && service.menus[menuId].items[itemIndex].state === menuItemState) {
+        if (service.menus[menuId].items.hasOwnProperty(itemIndex) && service.menus[menuId].items[itemIndex].id === menuItemId) {
           service.menus[menuId].items.splice(itemIndex, 1);
         }
       }

@@ -7,8 +7,8 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a ui-sref="folders.create({ projectId: vm.project._id })"><span class="glyphicon glyphicon-plus" style="font-size: 12px"></span> New Folder</a></li>
         <li><a ui-sref="article.create({ projectId: vm.project._id})"><span class="glyphicon glyphicon-plus" style="font-size: 12px"></span> New Article</a></li>
-        <li><a ui-sref="projects.edit({ projectId: vm.project._id })"><span class="glyphicon glyphicon-pencil" style="font-size: 12px"></span> Edit</a></li>
-        <li><a href="#" ng-click="vm.remove()"><span class="glyphicon glyphicon-trash" style="font-size: 12px"></span> Delete</a></li>
+        <li ng-if="vm.roles"><a ui-sref="projects.edit({ projectId: vm.project._id })"><span class="glyphicon glyphicon-pencil" style="font-size: 12px"></span> Edit</a></li>
+        <li ng-if="vm.roles"><a href="#" ng-click="vm.remove()"><span class="glyphicon glyphicon-trash" style="font-size: 12px"></span> Delete</a></li>
       </ul>
     </div>
   </nav>

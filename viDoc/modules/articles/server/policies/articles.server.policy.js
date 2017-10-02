@@ -13,7 +13,7 @@ acl = new acl(new acl.memoryBackend());
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
-    roles: ['admin'],
+    roles: ['admin', 'user'],
     allows: [{
       resources: '/api/projects/:projectId/folders/:folderId/articles',
       permissions: '*'
@@ -26,31 +26,19 @@ exports.invokeRolesPolicies = function () {
     }, {
       resources: '/api/projects/:projectId/articles/:articleId',
       permissions: '*'
-    }]
-  }, {
-    roles: ['user'],
-    allows: [{
-      resources: '/api/projects/:projectId/folders/:folderId/articles',
-      permissions: ['*']
     }, {
-      resources: '/api/projects/:projectId/folders/:folderId/articles/:articleId',
-      permissions: ['*']
-    }, {
-      resources: '/api/projects/:projectId/articles',
+      resources: '/api/projects/:projectId/articles/:articleId/comment',
       permissions: '*'
     }, {
-      resources: '/api/projects/:projectId/articles/:articleId',
+      resources: '/api/projects/:projectId/articles/:articleId/comment/:commentId',
+      permissions: '*'
+    }, {
+      resources: '/api/projects/:projectId/articles/:articleId/comment/:commentId/child',
       permissions: '*'
     }]
   }, {
     roles: ['guest'],
-    allows: [{
-      resources: '/api/articles',
-      permissions: ['get']
-    }, {
-      resources: '/api/articles/:articleId',
-      permissions: ['get']
-    }]
+    allows: []
   }]);
 };
 

@@ -25,13 +25,20 @@ exports.create = function (req, res) {
       });
     } else {
       project.articles.push(article._id);
+      project.update = Date.now();
       project.save(function (err) {
         if (err) {
           return res.status(422).send({
             message: errorHandler.getErrorMessage(err)
           });
         }
-        res.json(article);
+        res.json({
+          _id: article._id,
+          project: {
+            _id: project._id,
+            name: project.name
+          }
+        });
       });
     }
   });
@@ -66,7 +73,16 @@ exports.update = function (req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(article);
+      let project = req.project;
+      project.update = Date.now();
+      project.save(err => {
+        if (err) {
+          return res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+          });
+        }
+        res.json(article);
+      });
     }
   });
 };
@@ -85,6 +101,7 @@ exports.delete = function (req, res) {
       });
     } else {
       project.articles.splice(project.articles.indexOf(article._id), 1);
+      project.update = Date.now();
       project.save(err => {
         if (err) {
           return res.status(422).send({

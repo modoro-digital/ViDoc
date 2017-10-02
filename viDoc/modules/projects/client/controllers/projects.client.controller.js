@@ -6,39 +6,38 @@
     .module('projects')
     .controller('ProjectsController', ProjectsController);
 
-  ProjectsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'projectResolve', 'AdminService'];
+  ProjectsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'projectResolve', 'users', 'menuService'];
 
-  function ProjectsController ($scope, $state, $window, Authentication, project, AdminService) {
+  function ProjectsController ($scope, $state, $window, Authentication, project, users, menuService) {
     var vm = this;
+    var l = users.length;
 
     vm.authentication = Authentication;
+    vm.roles = Authentication.user.roles[0] === 'admin';
     vm.project = project;
-    AdminService.query(function (data) {
-      var l = data.length;
-      vm.users = {
-        row1: (l % 3) > 1 ? data.splice(0, l / 3 + 1) : data.splice(0, l / 3 + l % 3),
-        row2: (l % 3) > 1 ? data.splice(0, l / 3 + 1) : data.splice(0, l / 3),
-        row3: data.splice(0, l / 3)
-      };
-    });
+    vm.users = {
+      row1: (l % 3) > 1 ? users.splice(0, l / 3 + 1) : users.splice(0, l / 3 + l % 3),
+      row2: (l % 3) > 1 ? users.splice(0, l / 3 + 1) : users.splice(0, l / 3),
+      row3: users.splice(0, l / 3)
+    };
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
     vm.close = close;
-    if (!vm.project.userID) {
-      vm.project.userID = [];
+    if (!vm.project.users) {
+      vm.project.users = [];
     }
     vm.addUser = function(userId) {
-      var index = vm.project.userID.indexOf(userId);
+      var index = vm.project.users.indexOf(userId);
       if (index === -1) {
-        vm.project.userID.push(userId);
+        vm.project.users.push(userId);
       } else {
-        vm.project.userID.splice(index, 1);
+        vm.project.users.splice(index, 1);
       }
     };
     vm.check = function(userId) {
-      if (vm.project.userID && vm.project.userID.indexOf(userId) >= 0) {
+      if (vm.project.users && vm.project.users.indexOf(userId) >= 0) {
         return true;
       }
       return false;
@@ -75,6 +74,13 @@
       }
 
       function successCallback(res) {
+        menuService.updateMenuItem('sidebar', {
+          title: vm.project.name,
+          state: 'projects.view',
+          id: vm.project._id,
+          params: { name: 'projectId', id: vm.project._id },
+          roles: ['*']
+        });
         $state.go('home');
       }
 
