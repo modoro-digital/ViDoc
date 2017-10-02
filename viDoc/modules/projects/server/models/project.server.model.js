@@ -4,7 +4,9 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+  Schema = mongoose.Schema,
+  path = require('path'),
+  config = require(path.resolve('./config/config'));
 
 /**
  * Project Schema
@@ -51,3 +53,5 @@ var ProjectSchema = new Schema({
 });
 
 mongoose.model('Project', ProjectSchema);
+
+
