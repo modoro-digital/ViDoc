@@ -36,8 +36,11 @@
         vm.project.users.splice(index, 1);
       }
     };
-    vm.check = function(userId) {
-      if (vm.project.users && vm.project.users.indexOf(userId) >= 0) {
+    vm.check = function(user) {
+      if (vm.project.users && vm.project.users.indexOf(user._id) >= 0) {
+        return true;
+      }
+      if (user.roles[0] === 'admin') {
         return true;
       }
       return false;
