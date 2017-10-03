@@ -36,6 +36,15 @@ exports.create = function(req, res) {
       });
       addNotificationFunction.addNotification(users, message, user);
       res.jsonp(project);
+
+      var users = [],
+          message = "You were added on " + project.name + " project",
+          user = project.user._id;
+
+      project.userID.map( (elem) => {
+        users.push({user: elem})
+      });
+      addNotificationFunction.addNotification(users, message, user);
     }
   });
 
