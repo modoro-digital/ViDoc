@@ -20,7 +20,6 @@ var path = require('path'),
 exports.create = function(req, res) {
   var project = new Project(req.body);
   project.user = req.user._id;
-  project.users = [req.user._id.toString()];
 
   project.save(function(err) {
     if (err) {
@@ -28,6 +27,14 @@ exports.create = function(req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
+      var users = [],
+        message = "You were added on " + project.name + " project",
+        user = project.user._id;
+
+      project.users.map( (elem) => {
+        users.push({user: elem})
+      });
+      addNotificationFunction.addNotification(users, message, user);
       res.jsonp(project);
 
       var users = [],
@@ -120,26 +127,28 @@ exports.delete = function(req, res) {
  */
 exports.list = function(req, res) {
   if (req.user.roles[0] === 'admin') {
-    Project.find().sort('-update').populate('user', 'displayName').exec(function(err, projects) {
-      if (err) {
-        return res.status(400).send({
-          message: errorHandler.getErrorMessage(err)
-        });
-      } else {
-        res.jsonp(projects);
-      }
-    });
+    Project.find().sort('-update').populate({ path: 'user', select: ['displayName', 'profileImageURL'] })
+      .exec(function(err, projects) {
+        if (err) {
+          return res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+          });
+        } else {
+          res.jsonp(projects);
+        }
+      });
   } else {
     var id = req.user._id.toString();
-    Project.find({ users: id }).sort('-update').populate('user', 'displayName').exec(function(err, projects) {
-      if (err) {
-        return res.status(400).send({
-          message: errorHandler.getErrorMessage(err)
-        });
-      } else {
-        res.jsonp(projects);
-      }
-    });
+    Project.find({ users: id }).sort('-update')
+      .populate({ path: 'user', select: ['displayName', 'profileImageURL'] }).exec(function(err, projects) {
+        if (err) {
+          return res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+          });
+        } else {
+          res.jsonp(projects);
+        }
+      });
   }
 };
 
@@ -161,11 +170,16 @@ exports.projectByID = function(req, res, next, id) {
         message: 'User is not authorized'
       });
     }
-    User.find({ _id: { $in: project.users } }, { 'displayName': 1, 'profileImageURL': 1 })
-      .exec((err, users) => {
-        req.users = users;
-        req.project = project;
-        next();
-      });
+    User.find({
+      $or: [{
+        roles: "admin"
+      }, {
+        _id: project.users
+      }]
+    }, (err, users) => {
+      req.users = users;
+      req.project = project;
+      next();
+    });
   });
 };

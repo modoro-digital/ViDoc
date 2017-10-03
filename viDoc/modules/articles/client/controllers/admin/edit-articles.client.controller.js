@@ -17,7 +17,8 @@
     'Authentication',
     'Notification',
     'menuService',
-    '$timeout'
+    '$timeout',
+    'NotificationsService'
   ];
   function EditArticlesAdminController(
     $scope,
@@ -31,7 +32,8 @@
     Authentication,
     Notification,
     menuService,
-    $timeout
+    $timeout,
+    NotificationsService
   ) {
     var vm = this;
 
@@ -107,6 +109,15 @@
     vm.editComment = editComment;
     vm.editSubcomment = editSubcomment;
     vm.deleteComment = deleteComment;
+    vm.selectionStart = 0;
+    vm.selectionEnd = 0;
+    vm.listUsers = function () {
+      return vm.users.filter(user => {
+        if (user.displayName.toLowerCase().indexOf(vm.searchUsers.toLowerCase()) !== -1) {
+          return user;
+        }
+      })
+    }
     vm.keydownComment = function (event, comment) {
       let value = event.target.value;
       $timeout(function() {
@@ -120,21 +131,51 @@
         if (event.keyCode === 8) {
           if (vm.searchUsers === '') {
             vm.tag.style.display = 'none';
+            vm.tagBox = false;
+          } else {
+            $timeout(function() {
+              if (event.target.selectionStart < vm.selectionStart || event.target.selectionStart >= vm.selectionEnd - 1) {
+                vm.tag.style.display = 'none';
+                vm.tagBox = false;
+              } else {
+                vm.selectionEnd -= 1;
+                vm.searchUsers = event.target.value.slice(vm.selectionStart, vm.selectionEnd);
+              }
+            }, 0);
           }
-          vm.searchUsers = vm.searchUsers.slice(0, vm.searchUsers.length - 1);
-        } else if (event.which > 47) {
-          vm.searchUsers += event.key;
+        } else if (event.which > 47 || event.which === 32) {
+          $timeout(function() {
+            if (event.target.selectionStart <= vm.selectionStart || event.target.selectionStart > vm.selectionEnd) {
+              vm.tag.style.display = 'none';
+              vm.tagBox = false;
+            } else {
+              vm.searchUsers = event.target.value.slice(vm.selectionStart, vm.selectionEnd);
+              vm.selectionEnd += 1;
+            }
+          }, 0)
         }
       }
-      if (event.shiftKey && event.keyCode === 50) {
-        vm.searchUsers = '';
-        vm.tagBox = true;
-        let selectionStart = event.target.selectionStart;
-        let height, offsetLeft, place, top;
-        top = 0;
+      if (event.keyCode === 50) {
         $timeout(function () {
+          let selectionStart = event.target.selectionStart;
+          let height, offsetLeft, place, top, space;
+          vm.searchUsers = '';
+          vm.tagBox = true;
+          vm.selectionStart = selectionStart;
+          vm.selectionEnd = selectionStart + 1;
+          top = 0;
           place = event.target.value.indexOf(' ', selectionStart) !== -1
-            ? event.target.value.indexOf(' ', selectionStart) : selectionStart + 1;
+          space = event.target.value.indexOf(' ', selectionStart);
+          if (space !== -1) {
+            let gt = event.target.value.indexOf('\n', selectionStart);
+            if (gt !== -1 && gt < space) {
+              place = gt;
+            } else {
+              place = space;
+            }
+          } else {
+            place = selectionStart + 1;
+          }
           vm.a[0].innerText = event.target.value.slice(0, place);
           vm.a[0].style.display = 'inline';
           offsetLeft = vm.offsetLeft.offsetLeft;
@@ -244,7 +285,7 @@
               for (let j = 0; j < length; j++) {
                 if (vm.users[j].displayName.replace(/ /gi, '') === name.slice(1)) {
                   if (users.indexOf(vm.users[j]._id) === -1) {
-                    users.push(vm.users[j]._id);
+                    users.push({ user: vm.users[j]._id, read: false});
                   }
                   value = value.replace(name, `<span style="color: #365899">${vm.users[j].displayName}</span>`);
                   break;
@@ -258,7 +299,7 @@
             for (let j = 0; j < length; j++) {
               if (vm.users[j].displayName.replace(/ /gi, '') === name.slice(1)) {
                 if (users.indexOf(vm.users[j]._id) === -1) {
-                  users.push(vm.users[j]._id);
+                  users.push({ user: vm.users[j]._id, read: false});
                 }
                 value = value.replace(name, `<span style="color: #365899">${vm.users[j].displayName}</span>`);
                 l = l + 36 + vm.users[j].displayName.length - name.length;
@@ -300,12 +341,19 @@
         if (res.message) {
           vm.comments = vm.comments.filter(item => item._id !== _id);
         } else {
-          console.log(changText(res.content, 'array'));
           vm.comments = vm.comments.map(item => {
             if (item._id === _id) {
               return res;
             }
             return item;
+          });
+          let notificationsService = new NotificationsService()
+          notificationsService.users = changText(res.content, 'array');
+          notificationsService.message = vm.authentication.user.displayName + ' da them ban vao 1 comment';
+          notificationsService.$save(res => {
+            if (res.message) {
+              console.log(res.message);
+            }
           });
         }
       });
@@ -334,6 +382,14 @@
         if (res.message) {
           comment.subcommentList = comment.subcommentList.filter(item => item._id !== _id);
         } else {
+          let notificationsService = new NotificationsService()
+          notificationsService.users = changText(res.content, 'array');
+          notificationsService.message = vm.authentication.user.displayName + ' da them ban vao 1 comment';
+          notificationsService.$save(res => {
+            if (res.message) {
+              console.log(res.message);
+            }
+          });
           comment.subcommentList = comment.subcommentList.map(item => {
             if (item._id === _id) {
               return res;

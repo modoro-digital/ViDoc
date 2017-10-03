@@ -22,7 +22,8 @@
           <h3 class="">Add users</h3>
           <div class="col-md-4" ng-repeat="users in vm.users">
             <div class="checkbox" ng-repeat="user in users">
-              <label><input type="checkbox" ng-click="vm.addUser(user._id)" ng-checked="vm.check(user._id)">{{user.displayName}}</label>
+              <label><input type="checkbox" ng-click="vm.addUser(user._id)"
+                ng-disabled="user.roles[0] === 'admin'" ng-checked="vm.check(user)">{{user.displayName}}</label>
             </div>
           </div>
         </div>
