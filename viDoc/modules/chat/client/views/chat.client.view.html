@@ -1,45 +1,104 @@
-<!-- Content Header (Page header) -->
-<section class="content-header">
-  <h1>
-    Chat Box
-    <small>Chat Example</small>
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Chat</li>
-  </ol>
-</section>
 
-<!-- The chat view -->
-<section class="content">
-  <div class="box box-success">
-    <div class="box-header with-border">
-      <h3 class="box-title">Start chat</h3>
+<div ng-controller="ChatController as vm">
+  <div class="chatbox chatbox--tray chatbox--empty" ng-repeat="(index, item) in vm.top2"
+       ng-style="{'right': index === 0 ? (index+1)*380+'px' : (index+1)*350+'px'}">
+    <div class="chatbox__title" ng-click="vm.showChat(index)">
+      <h5><span class="hidden-xs title" ng-bind="item.displayName"></span></h5>
+      <button class="chatbox__title__tray">
+        <span></span>
+      </button>
+      <button class="chatbox__title__close" ng-click="vm.removeUser(index)">
+            <span>
+                <svg viewBox="0 0 12 12" width="12px" height="12px">
+                    <line stroke="#FFFFFF" x1="11.75" y1="0.25" x2="0.25" y2="11.75"></line>
+                    <line stroke="#FFFFFF" x1="11.75" y1="11.75" x2="0.25" y2="0.25"></line>
+                </svg>
+            </span>
+      </button>
     </div>
-    <div class="box-body">
-      <!-- The message form -->
-      <form class="col-xs-12 col-md-offset-4 col-md-4" ng-submit="vm.sendMessage();">
-        <fieldset class="row">
-          <div class="input-group">
-            <input type="text" id="messageText" name="messageText" class="form-control" ng-model="vm.messageText" placeholder="Enter new message" autofocus>
+<div class="chatbox__body">
+    <div class=" chatbox__credentials" ng-repeat="message in vm.messages" >
+      <div class="{{message.id == vm.authentication.user._id ? 'chatbox__body__message chatbox__body__message--right direct-chat-text' : 'chatbox__body__message chatbox__body__message--left direct-chat-textt'}}">
+        <small class="direct-chat-name pull-right" ng-bind="message.created | date:'mediumTime'"></small>
+        <img src="/{{message.profileImageURL}}" alt="Picture" class="direct-chat-img ">
+        <span class="text" ng-bind="message.text"></span>
+      </div>
+    </div>
+</div>
+    <form  ng-submit="vm.sendMessage(item._id);">
+    <div class="chatbox__message">
+      <div class="input-group">
+        <input type="text" id="messageText" name="messageText" class="form-control" ng-model="vm.messageText" placeholder="Enter new message" autofocus>
         <span class="input-group-btn">
-          <button type="submit" class="btn btn-primary" ng-disabled="!vm.messageText.length">Submit</button>
+          <button type="submit" class="btn btn-primary" ng-disabled="!vm.messageText.length">Send</button>
         </span>
-          </div>
-        </fieldset>
-      </form>
-      <ul class="list-unstyled">
-        <!-- List all messages -->
-        <li class="col-xs-12 col-md-offset-4 col-md-4 chat-message" ng-repeat="message in vm.messages">
-          <small class="pull-right text-muted" ng-bind="message.created | date:'mediumTime'"></small>
-          <img ng-src="/{{message.profileImageURL}}" alt="{{message.username}}" class="pull-left chat-profile-image" />
-          <div class="pull-left chat-message-details">
-            <strong ng-bind="message.username"></strong>
-            <br>
-            <span ng-bind="message.text"></span>
-          </div>
+      </div>
+    </div>
+    </form>
+  </div>
+  <div class="dropd" ng-if="vm.chats.length > 2" >
+    <div class="dropup">
+    <button  class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+      <i class="fa fa-comments-o" style="font-size:24px"></i><span class="caret"></span>
+    </button>
+      <ul class="dropdown-menu">
+        <li ng-repeat="user in vm.changeUser()" ng-click="vm.editChat(user)"><a href="#">{{user.displayName}}
+        <button class="chatbox__title__close" ng-click="vm.removeUser(index)" >
+            <span>
+                <svg viewBox="0 0 12 12" width="12px" height="12px" >
+                    <line stroke="#FFFFFF" x1="11.75" y1="0.25" x2="0.25" y2="11.75"></line>
+                    <line stroke="#FFFFFF" x1="11.75" y1="11.75" x2="0.25" y2="0.25"></line>
+                </svg>
+            </span>
+        </button>
+        </a>
         </li>
       </ul>
+  </div>
+  </div>
+  <div class="f">
+    <div class="col-sm-6 kt" style="position: absolute;bottom: 0px;" >
+      <div class="panel-group">
+        <div class="panel panel-default  " style="position: absolute; bottom: 0px; width: 100%;">
+          <div class="panel-heading " data-toggle="collapse" data-target="#collapse3" >
+            <div class="panel panel-default  "  >
+              <div class="panel-heading c-lit">
+                <span class="title">Chat</span>
+              </div>
+            </div>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
+            <div class="row" >
+              <div class="col-sm-6">
+                <div class="input-group c-search">
+                  <input type="text" class="form-control" id="contact-list-search">
+                  <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search text-muted"></span></button>
+              </span>
+                </div>
+              </div>
+            </div>
+            <ul class="list-group" id="contact-list">
+              <li class="list-group-item" ng-repeat="user in vm.users">
+                <a ng-click="vm.send(user)" href="">
+                  <div class="col-sm-12 col-sm-3  ">
+                    <img ng-src="/{{user.profileImageURL}}" alt="{{user.displayName}}" class="img-responsive img-circle" />
+                  </div>
+                  <div class="col-sm-6 tp">
+                    <span class="hidden-xs name" ng-bind="user.displayName"></span>
+                  </div>
+                  <div class="col-sm-3 tp">
+                    <span class="pull-right"><i class="fa fa-circle" style="font-size:10px;color:green; right: 0px"></i></span>
+
+                  </div>
+                  <div class="clearfix"></div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+
+</div>
