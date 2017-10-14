@@ -18,7 +18,8 @@
     "AdminLTE": "admin-lte#^2.3.11",
     "jquery": "^3.2.1",
     "jquery-ui": "^1.12.1",
-    "ckeditor": "^4.7.1"
+    "ckeditor": "^4.7.1",
+    "angular-local-storage": "^0.7.1"
   },
   "overrides": {
     "bootstrap": {},

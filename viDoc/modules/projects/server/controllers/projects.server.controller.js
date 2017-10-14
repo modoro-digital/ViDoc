@@ -10,7 +10,6 @@ var path = require('path'),
   Folder = mongoose.model('Folder'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
-
 /**
  * Create a Project
  */
