@@ -6,9 +6,12 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Project = mongoose.model('Project'),
+  Notification = mongoose.model('Notification'),
   Article = mongoose.model('Article'),
   Folder = mongoose.model('Folder'),
+  User = mongoose.model('User'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+  addNotificationFunction = require(path.resolve('./modules/notifications/server/controllers/notifications.server.controller')),
   _ = require('lodash');
 /**
  * Create a Project
@@ -23,9 +26,27 @@ exports.create = function(req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
+      var users = [],
+        message = "You were added on " + project.name + " project",
+        user = project.user._id;
+
+      project.users.map( (elem) => {
+        users.push({user: elem})
+      });
+      addNotificationFunction.addNotification(users, message, user);
       res.jsonp(project);
+
+      var users = [],
+          message = "You were added on " + project.name + " project",
+          user = project.user._id;
+
+      project.userID.map( (elem) => {
+        users.push({user: elem})
+      });
+      addNotificationFunction.addNotification(users, message, user);
     }
   });
+
 };
 
 /**
@@ -55,7 +76,7 @@ exports.read = function(req, res) {
           _id: project._id,
           name: project.name,
           description: project.description,
-          userID: project.userID,
+          users: project.users,
           folders: folders,
           articles: articles
         });
@@ -70,6 +91,7 @@ exports.update = function(req, res) {
   var project = req.project;
 
   project = _.extend(project, req.body);
+  project.update = Date.now();
 
   project.save(function(err) {
     if (err) {
@@ -103,15 +125,30 @@ exports.delete = function(req, res) {
  * List of Projects
  */
 exports.list = function(req, res) {
-  Project.find().sort('-created').populate('user', 'displayName').exec(function(err, projects) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
+  if (req.user.roles[0] === 'admin') {
+    Project.find().sort('-update').populate({ path: 'user', select: ['displayName', 'profileImageURL'] })
+      .exec(function(err, projects) {
+        if (err) {
+          return res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+          });
+        } else {
+          res.jsonp(projects);
+        }
       });
-    } else {
-      res.jsonp(projects);
-    }
-  });
+  } else {
+    var id = req.user._id.toString();
+    Project.find({ users: id }).sort('-update')
+      .populate({ path: 'user', select: ['displayName', 'profileImageURL'] }).exec(function(err, projects) {
+        if (err) {
+          return res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+          });
+        } else {
+          res.jsonp(projects);
+        }
+      });
+  }
 };
 
 /**
@@ -119,31 +156,29 @@ exports.list = function(req, res) {
  */
 exports.projectByID = function(req, res, next, id) {
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    var name = id.replace(/-/gi, ' ');
-    Project.findOne({ name: { $regex: name, $options: 'i' } })
-    .populate('user', 'displayName').exec(function (err, project) {
-      if (err) {
-        return next(err);
-      } else if (!project) {
-        return res.status(404).send({
-          message: 'No Project with that identifier has been found'
-        });
-      }
+  Project.findById(id).populate('user', 'displayName').exec(function (err, project) {
+    if (err) {
+      return next(err);
+    } else if (!project) {
+      return res.status(404).send({
+        message: 'No Project with that identifier has been found'
+      });
+    }
+    if (project.users.indexOf(req.user._id) === -1 && req.user.roles[0] !== 'admin') {
+      return res.status(404).send({
+        message: 'User is not authorized'
+      });
+    }
+    User.find({
+      $or: [{
+        roles: "admin"
+      }, {
+        _id: project.users
+      }]
+    }, (err, users) => {
+      req.users = users;
       req.project = project;
       next();
     });
-  } else {
-    Project.findById(id).populate('user', 'displayName').exec(function (err, project) {
-      if (err) {
-        return next(err);
-      } else if (!project) {
-        return res.status(404).send({
-          message: 'No Project with that identifier has been found'
-        });
-      }
-      req.project = project;
-      next();
-    });
-  }
+  });
 };

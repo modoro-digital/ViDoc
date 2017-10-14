@@ -6,9 +6,9 @@
     .module('folders')
     .controller('FoldersController', FoldersController);
 
-  FoldersController.$inject = ['$scope', '$state', '$window', 'Authentication', 'folderResolve'];
+  FoldersController.$inject = ['$scope', '$state', '$window', 'Authentication', 'folderResolve', 'menuService'];
 
-  function FoldersController ($scope, $state, $window, Authentication, folder) {
+  function FoldersController ($scope, $state, $window, Authentication, folder, menuService) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -22,16 +22,25 @@
 
     // Remove existing Folder
     function remove() {
+
       if ($window.confirm('Are you sure you want to delete?')) {
-        vm.folder.$remove(function() {
-          if (vm.folder.parentfolder) {
+        vm.folder.project = vm.projectId;
+        vm.folder.$remove(function(res) {
+          menuService.updateMenuItem('sidebar', {
+            title: res.project.name,
+            state: 'projects.view',
+            id: res.project._id,
+            params: { name: 'projectId', id: res.project._id },
+            roles: ['*']
+          });
+          if (res.parentfolder) {
             $state.go('folders.view', {
-              projectId: $state.params.projectId,
-              folderId: vm.folder.parentfolder
+              projectId: res.project._id,
+              folderId: res.parentfolder
             });
           } else {
             $state.go('projects.view', {
-              projectId: $state.params.projectId
+              projectId: res.project._id
             });
           }
         });
@@ -57,14 +66,21 @@
       }
 
       function successCallback(res) {
+        menuService.updateMenuItem('sidebar', {
+          title: res.project.name,
+          state: 'projects.view',
+          id: res.project._id,
+          params: { name: 'projectId', id: res.project._id },
+          roles: ['*']
+        });
         if (vm.folder.parentfolder) {
           $state.go('folders.view', {
-            projectId: vm.projectId,
-            folderId: vm.folder.parentfolder
+            projectId: res.project._id,
+            folderId: res.parentfolder
           });
         } else {
           $state.go('projects.view', {
-            projectId: vm.projectId
+            projectId: res.project._id
           });
         }
       }

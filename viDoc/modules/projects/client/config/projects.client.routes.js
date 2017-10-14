@@ -30,7 +30,8 @@
         controller: 'ProjectsController',
         controllerAs: 'vm',
         resolve: {
-          projectResolve: newProject
+          projectResolve: newProject,
+          users: usersList
         },
         data: {
           roles: ['admin'],
@@ -43,7 +44,8 @@
         controller: 'ProjectsController',
         controllerAs: 'vm',
         resolve: {
-          projectResolve: getProject
+          projectResolve: getProject,
+          users: usersList
         },
         data: {
           roles: ['user', 'admin'],
@@ -56,7 +58,10 @@
         controller: 'ProjectsController',
         controllerAs: 'vm',
         resolve: {
-          projectResolve: getProject
+          projectResolve: getProject,
+          users: function () {
+            return [];
+          }
         },
         data: {
           pageTitle: '{{ projectResolve.name }}'
@@ -70,6 +75,12 @@
     return ProjectsService.get({
       projectId: $stateParams.projectId
     }).$promise;
+  }
+
+  usersList.$inject = ['$stateParams', 'AdminService'];
+
+  function usersList($stateParams, AdminService) {
+    return AdminService.query().$promise;
   }
 
   newProject.$inject = ['ProjectsService'];

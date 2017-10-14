@@ -10,11 +10,13 @@
   function menuConfig(menuService, ProjectsService) {
     // Set top bar menu items
     ProjectsService.query(projects => {
-      for (let project of projects) {
+      var l = projects.length > 5 ? 5 : projects.length;
+      for (let i = 0; i < l; i++) {
         menuService.addMenuItem('sidebar', {
-          title: project.name,
+          title: projects[i].name,
           state: 'projects.view',
-          params: { name: 'projectId', id: project._id },
+          id: projects[i]._id,
+          params: { name: 'projectId', id: projects[i]._id },
           roles: ['*']
         });
       }

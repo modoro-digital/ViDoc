@@ -4,7 +4,9 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+  Schema = mongoose.Schema,
+  path = require('path'),
+  config = require(path.resolve('./config/config'));
 
 /**
  * Project Schema
@@ -28,7 +30,7 @@ var ProjectSchema = new Schema({
     type: Array,
     default: []
   },
-  userID: {
+  users: {
     type: Array,
     default: []
   },
@@ -40,6 +42,10 @@ var ProjectSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  update: {
+    type: Date,
+    default: Date.now
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'
@@ -47,3 +53,5 @@ var ProjectSchema = new Schema({
 });
 
 mongoose.model('Project', ProjectSchema);
+
+

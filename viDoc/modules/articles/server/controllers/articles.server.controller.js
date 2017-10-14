@@ -31,7 +31,22 @@ exports.create = function (req, res) {
             message: errorHandler.getErrorMessage(err)
           });
         }
-        res.json(article);
+        let project = req.project;
+        project.update = Date.now();
+        project.save(err => {
+          if (err) {
+            return res.status(400).send({
+              message: errorHandler.getErrorMessage(err)
+            });
+          }
+          res.json({
+            _id: article._id,
+            project: {
+              _id: project._id,
+              name: project.name
+            }
+          });
+        });
       });
     }
   });
@@ -66,7 +81,16 @@ exports.update = function (req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(article);
+      let project = req.project;
+      project.update = Date.now();
+      project.save(err => {
+        if (err) {
+          return res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+          });
+        }
+        res.json(article);
+      });
     }
   });
 };
@@ -91,7 +115,16 @@ exports.delete = function (req, res) {
             message: errorHandler.getErrorMessage(err)
           });
         } else {
-          res.json(article);
+          let project = req.project;
+          project.update = Date.now();
+          project.save(err => {
+            if (err) {
+              return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+              });
+            }
+            res.json(article);
+          });
         }
       });
     }
@@ -119,7 +152,7 @@ exports.list = function (req, res) {
 exports.articleByID = function (req, res, next, id) {
   if (mongoose.Types.ObjectId.isValid(id)) {
     Article.findById(id)
-    .populate('user', 'displayName').exec(function (err, article) {
+    .populate([{ path: 'user', select: 'displayName' }, { path: 'project', select: 'name' }]).exec(function (err, article) {
       if (err) {
         return next(err);
       } else if (!article) {
